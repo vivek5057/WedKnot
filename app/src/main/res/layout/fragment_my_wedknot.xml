@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NavigationFragment.MyWedknotFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <LinearLayout
+                android:id="@+id/parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/iconparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="25dp">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/main_user_profile_pic"
+                            android:layout_width="70dp"
+                            android:outlineAmbientShadowColor="@color/mywhite"
+                            android:outlineSpotShadowColor="@color/mywhite"
+                            android:shadowColor="@color/colorPrimary"
+                            android:elevation="10dp"
+                            android:translationZ="10dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/user_profile_pic" />
+
+                        <TextView
+                            android:id="@+id/current_user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="2dp"
+                            android:gravity="center"
+                            android:text="User Name"
+                            android:textColor="@color/mywhite" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/my_detail_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:outlineAmbientShadowColor="@color/mywhite"
+                            android:outlineSpotShadowColor="@color/mywhite"
+                            android:shadowColor="@color/colorPrimary"
+                            android:elevation="10dp"
+                            android:translationZ="10dp"
+                            app:srcCompat="@drawable/ic_my_details" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Detail"
+                            android:textColor="@color/mywhite" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/my_partner_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:outlineAmbientShadowColor="@color/mywhite"
+                            android:outlineSpotShadowColor="@color/mywhite"
+                            android:shadowColor="@color/colorPrimary"
+                            android:elevation="10dp"
+                            android:translationZ="10dp"
+                            app:srcCompat="@drawable/ic_my_partner" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Partner"
+                            android:textColor="@color/mywhite" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/my_family_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:outlineAmbientShadowColor="@color/mywhite"
+                            android:outlineSpotShadowColor="@color/mywhite"
+                            android:shadowColor="@color/colorPrimary"
+                            android:elevation="10dp"
+                            android:translationZ="10dp"
+                            app:srcCompat="@drawable/ic_my_family" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Family"
+                            android:textColor="@color/mywhite" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_collapseMode="pin">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="WEDKNOT"
+                        android:textColor="@color/mywhite"
+                        android:textSize="24dp" />
+
+
+                    <TextView
+                        android:id="@+id/log_out_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Log Out"
+                        android:textColor="@color/mywhite"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log Out"
+                    android:textColor="@color/mywhite" />
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_my_wedknot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Recently Joined"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/week_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/next_button"
+                        android:backgroundTint="@color/colorAccent"
+                        android:text="Week"
+                        android:visibility="invisible"
+                        android:textColor="@color/mywhite" />
+
+                    <Button
+                        android:id="@+id/week1_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/next_button"
+                        android:backgroundTint="@color/mygrey"
+                        android:text="Week"
+                        android:textColor="@color/mywhite" />
+
+                    <Button
+                        android:id="@+id/month1_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/week_filter"
+                        android:background="@drawable/next_button"
+                        android:backgroundTint="@color/mygrey"
+                        android:visibility="invisible"
+                        android:text="Month"
+                        android:outlineAmbientShadowColor="@color/mywhite"
+                        android:outlineSpotShadowColor="@color/mywhite"
+                        android:shadowColor="@color/colorPrimary"
+                        android:elevation="10dp"
+                        android:translationZ="10dp"
+                        android:textColor="@color/mywhite" />
+
+
+                    <Button
+                        android:id="@+id/month_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/week_filter"
+                        android:background="@drawable/next_button"
+                        android:backgroundTint="@color/colorAccent"
+                        android:outlineAmbientShadowColor="@color/mywhite"
+                        android:outlineSpotShadowColor="@color/mywhite"
+                        android:shadowColor="@color/colorPrimary"
+                        android:elevation="10dp"
+                        android:translationZ="10dp"
+                        android:text="Month"
+                        android:textColor="@color/mywhite" />
+
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recently_joined_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp" />
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/search_floating_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            app:backgroundTint="@color/colorAccent"
+            android:outlineAmbientShadowColor="@color/colorAccent"
+            android:outlineSpotShadowColor="@color/mywhite"
+            android:shadowColor="@color/colorPrimary"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

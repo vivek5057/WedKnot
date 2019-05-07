@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_recycleview_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/person_image"
+        android:layout_width="60dp"
+        android:outlineAmbientShadowColor="@color/mywhite"
+        android:outlineSpotShadowColor="@color/mywhite"
+        android:shadowColor="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/myicon"
+        android:transitionName="chatBoxImage"/>
+
+
+    <RelativeLayout
+        android:id="@+id/text_name_relative"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="normal"
+            android:text="Vivek Pandey" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mygrey" />
+    </RelativeLayout>
+
+</LinearLayout>

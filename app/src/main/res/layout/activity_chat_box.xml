@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chatboxbg"
+    tools:context=".ChatFragmentInside.ChatBoxActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/chatbox_toolbar_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/chatbox_userimage"
+                android:layout_marginTop="1dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/myicon"
+                android:outlineAmbientShadowColor="@color/colorPrimary"
+                android:outlineSpotShadowColor="@color/colorPrimary"
+                android:shadowColor="@color/mywhite"
+                android:elevation="10dp"
+                android:translationZ="10dp"
+                android:transitionName="chatBoxImage"/>
+
+            <TextView
+                android:id="@+id/chatbox_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="Vivek Pandey"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/mywhite"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/delete_message_bubble"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.wave.MultiWaveHeader
+            android:id="@+id/waveHeader"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:mwhStartColor="@color/colorPrimary"
+            app:mwhCloseColor="@color/colorPrimaryDark"
+            app:mwhVelocity="4"
+            android:scaleY="-1"
+            android:layout_alignParentBottom="true"
+            />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chatbox_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="73dp"
+            android:layout_marginBottom="60dp"/>
+
+
+        <ImageView
+            android:id="@+id/send_message_button"
+            android:layout_marginTop="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:outlineAmbientShadowColor="@color/mywhite"
+            android:outlineSpotShadowColor="@color/mywhite"
+            android:shadowColor="@color/colorPrimary"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/send_message_icon"/>
+
+        <RelativeLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/next_button"
+            android:backgroundTint="@color/mywhite">
+
+        <EditText
+            android:id="@+id/message_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:hint="Type a message"
+            android:background="@drawable/next_button"
+            android:backgroundTint="@color/mywhite"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

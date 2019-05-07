@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    tools:context=".InitialForms.CareerDetails">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Education"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0d47a1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Highest Education *"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/highest_education"
+        style="@style/EditText"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:buttonTint="@color/colorAccent"
+        android:hint="Highest Education *" />
+
+    <EditText
+        android:id="@+id/college_name_optional"
+        style="@style/EditText"
+        android:layout_marginTop="20dp"
+        android:buttonTint="@color/colorAccent"
+        android:hint="College/University(optional)" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Work Experience"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0d47a1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Work Area*"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/work_area"
+        style="@style/EditText"
+        android:layout_marginTop="5dp"
+        android:layout_height="40dp"
+        android:buttonTint="@color/colorAccent"
+        android:hint="Work Area *" />
+
+    <TextView
+        android:id="@+id/cities_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Annual Income *"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/income"
+        style="@style/EditText"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:buttonTint="@color/colorAccent"
+        android:hint="Income *" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/careerButton"
+            style="@style/NextButton"
+            android:layout_margin="10dp"
+            android:outlineAmbientShadowColor="@color/mywhite"
+            android:outlineSpotShadowColor="@color/mywhite"
+            android:shadowColor="@color/colorPrimary"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:background="@drawable/next_button" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        card_view:cardBackgroundColor="@color/mywhite"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:id="@+id/image_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="395dp">
+
+                <ImageView
+                    android:id="@+id/recently_joined_user_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/sample_match_img2" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/image_bottom_black">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="30dp">
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/recently_joined_user_height"
+                            android:text="Aditi Vats"
+                            android:textSize="34dp"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/recently_joined_user_age"
+                            android:text="5'9"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/recently_joined_user_language"
+                            android:text="23"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_text_yrs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/recently_joined_user_language"
+                            android:layout_toEndOf="@+id/recently_joined_user_age"
+                            android:layout_toRightOf="@+id/recently_joined_user_age"
+                            android:text="yrs"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite" />
+
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_language"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:text="Hindi"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_separate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toRightOf="@id/recently_joined_user_language"
+                            android:text=","
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_religion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toRightOf="@id/recently_joined_user_separate"
+                            android:text="Hindu"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toStartOf="@+id/recently_joined_user_sep"
+                            android:layout_toLeftOf="@+id/recently_joined_user_sep"
+                            android:text="New Delhi"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_sep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toStartOf="@+id/recently_joined_user_country"
+                            android:layout_toLeftOf="@+id/recently_joined_user_country"
+                            android:text=","
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="India"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/mywhite"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/recently_joined_user_email"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/recently_joined_send_interest_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/next_button"
+                android:backgroundTint="@color/colorAccent"
+                android:outlineAmbientShadowColor="@color/mywhite"
+                android:outlineSpotShadowColor="@color/mywhite"
+                android:shadowColor="@color/colorPrimary"
+                android:elevation="10dp"
+                android:translationZ="10dp"
+                android:text="Send Interest"
+                android:textColor="@color/mywhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/recently_joined_interest_sent_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                android:background="@drawable/next_button"
+                android:backgroundTint="@color/mygrey"
+                android:elevation="8dp"
+                android:textColor="@color/mywhite"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

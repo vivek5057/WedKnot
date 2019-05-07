@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">WedKnot</string>
+    <string name="personaldetails">Personal Details</string>
+    <string name="title_activity_login_details">LoginDetails</string>
+
+    <string name="country_error">Enter valid country name.</string>
+    <string name="dob_error">Enter valid DOB.</string>
+    <string name="fullname_error">Enter valid name.</string>
+    <string name="password_error">Enter valid password.</string>
+    <string name="email_error">Enter valid email.</string>
+    <string name="phoneno_error">Enter valid number.</string>
+    <string name="first">The one you are perfect for, is waiting for you to log in.</string>
+    <string name="second">We bring people together.\nLove unites them...</string>
+    <string name="third">Find Your Perfect Partner At WedKnot</string>
+    <string name="familytext">You have completed your registration\nsuccessfully!\n5% increase in matches found for profiles\nwith Family Details</string>
+    <string name="username_error">Enter valid username.</string>
+    <string-array name="features">
+        <item>Best Matches</item>
+        <item>Max Responses</item>
+        <item>100% Privacy</item>
+    </string-array>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="aboutme">Aditi is an Android Developer, with experience of managing global teams and multi-million-dollar campaigns. Her background in brand strategy,
+        visual design, and account management inform her mindful but competitive approach.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

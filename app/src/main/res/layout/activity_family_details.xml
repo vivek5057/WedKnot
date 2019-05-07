@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    tools:context=".InitialForms.FamilyDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family Details"
+                android:textColor="@color/colorAccent"
+                android:textSize="28dp"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                />
+
+
+            <TextView
+                    android:gravity="center"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#e3f2fd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/familytext" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Father's Occupation *"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/father_occupation"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Father's occupation *" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Mother's Occupation"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/mother_occupation"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Mother's Occupation" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Brother(s)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/brothers"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Brother(s)" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Sister(s)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/sisters"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Sister(s)" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Family Income"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/family_income"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Family Income" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Family Status"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/family_status"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Family Status" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Family Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/family_types"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown"
+                android:buttonTint="@color/colorAccent"
+                android:hint="Family Type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Living With Parents?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <Spinner
+                android:id="@+id/living_with_parents"
+                style="@style/EditText"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown"
+                android:layout_marginBottom="60dp"
+                android:buttonTint="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#f5f5f5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/skip_button"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorAccent"
+            android:text="SKIP"
+            android:outlineAmbientShadowColor="@color/mywhite"
+            android:outlineSpotShadowColor="@color/mywhite"
+            android:shadowColor="@color/colorAccent"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffff" />
+
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="80dp"
+            android:outlineAmbientShadowColor="@color/mywhite"
+            android:outlineSpotShadowColor="@color/mywhite"
+            android:shadowColor="@color/colorPrimary"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorPrimary"
+            android:text="NEXT"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+

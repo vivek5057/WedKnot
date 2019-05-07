@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "26168393940",
+    "firebase_url": "https://wedknot-bf36a.firebaseio.com",
+    "project_id": "wedknot-bf36a",
+    "storage_bucket": "wedknot-bf36a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26168393940:android:575f5ca2a94e8672",
+        "android_client_info": {
+          "package_name": "com.example.acerpc.wedknot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26168393940-hooq4qb9km1kpkm8tmjm7akd1ovt9knm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.acerpc.wedknot",
+            "certificate_hash": "0a87aca5da53d552a2c336c7b4473819bd57ee80"
+          }
+        },
+        {
+          "client_id": "26168393940-vo20ked0df9n42qd949m9qef2idm7oqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAoj3Il2ifHqpqAgI-BZSaxN8eqy-4W8U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26168393940-vo20ked0df9n42qd949m9qef2idm7oqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

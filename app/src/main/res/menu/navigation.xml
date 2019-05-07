@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_my_wedknot"
+        android:icon="@drawable/bottom_my_wedknot_icon"
+        android:title="My WedKnot" />
+
+    <item
+        android:id="@+id/bottom_matches"
+        android:icon="@drawable/bottom_matches"
+        android:title="Matches"/>
+
+    <item
+        android:id="@+id/bottom_inbox"
+        android:icon="@drawable/bottom_inbox"
+        android:title="Inbox" />
+
+    <item
+        android:id="@+id/bottom_chat"
+        android:icon="@drawable/bottom_chatpng"
+        android:title="Chat" />
+
+
+</menu>

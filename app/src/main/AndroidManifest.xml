@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.acerpc.wedknot">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".NavigationFragment.UserDetailOnClick"></activity>
+        <activity android:name=".InitialForms.LifeStyleInitial" />
+        <activity android:name=".MyWedknotInside.LifeStyleMyDetail" />
+        <activity android:name=".InitialForms.PartnerPreferencesInitial" />
+        <activity android:name=".SearchFloatingbutton.MatchesForSearch" />
+        <activity
+            android:name=".SearchFloatingbutton.SearchPartnerPreferences"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MyWedknotInside.PersonalDetailsMyDetail" />
+        <activity
+            android:name=".MyWedknotInside.BasicDetailsMyPartner"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChatFragmentInside.ChatBoxActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyWedknotInside.MyPartnerDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyWedknotInside.MyFamilyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyWedknotInside.MyDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".InitialForms.FamilyDetailsActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".InitialForms.LoginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".InitialForms.PersonalDetailsActivity"
+            android:label="@string/personaldetails" />
+        <activity
+            android:name=".MyWedknotInside.MyFamilyCardFromMyWedknot"
+            android:label="My Family"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InitialForms.CareerDetails"
+            android:label="Career Details" />
+        <activity
+            android:name=".InitialForms.SocialDetails"
+            android:label="Social Details" />
+        <activity
+            android:name=".InitialForms.LoginDetails"
+            android:label="Login Details" />
+        <activity
+            android:name=".BottomNavigationActivity"
+            android:label="@string/title_activity_bottom_navigation"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

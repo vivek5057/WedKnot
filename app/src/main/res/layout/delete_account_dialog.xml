@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+
+    <TextView
+        android:id="@+id/delete_account_email"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="40dp"
+        android:textColor="@color/mywhite"
+        android:outlineAmbientShadowColor="@color/mywhite"
+        android:outlineSpotShadowColor="@color/mywhite"
+        android:shadowColor="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        style="@style/EditText"/>
+
+    <EditText
+        android:id="@+id/delete_account_password"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/mywhite"
+        android:hint="Enter Password"
+        android:outlineAmbientShadowColor="@color/mywhite"
+        android:outlineSpotShadowColor="@color/mywhite"
+        android:shadowColor="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        android:layout_height="40dp"
+        android:textColorHint="@color/mywhite"
+        style="@style/EditText"/>
+
+    <Button
+        android:id="@+id/dialog_delete_acc_button"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Delete Account"
+        android:outlineAmbientShadowColor="@color/mywhite"
+        android:outlineSpotShadowColor="@color/mywhite"
+        android:shadowColor="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        android:textColor="@color/mywhite"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:background="@drawable/next_button"/>
+
+
+</LinearLayout>

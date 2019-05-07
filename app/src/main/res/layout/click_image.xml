@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="250dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center">
+
+
+    <ImageView
+        android:id="@+id/imageClick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:outlineAmbientShadowColor="@color/mywhite"
+        android:outlineSpotShadowColor="@color/mywhite"
+        android:shadowColor="@color/colorPrimary"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        app:srcCompat="@drawable/ic_launcher_background"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/dialog_image_name_background">
+
+    <TextView
+        android:id="@+id/name_on_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        tools:text="Vivek Pandey"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
