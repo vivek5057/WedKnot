@@ -13,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.acerpc.wedknot.InitialForms.AllFormDetailsPojo;
 import com.example.acerpc.wedknot.MainActivity;
@@ -56,14 +58,18 @@ public class MyWedknotFragment extends Fragment {
     Button monthButton;
     Button month1Button;
     String currentUserGender;
+    LottieAnimationView animationView;
 
     SharedPreferences filterRecentlyJoin;
     SharedPreferences.Editor filterEdit;
 
+    View emptyView;
     RecyclerView recyclerView;
     RecentlyJoinedRecyclerViewAdapter adapter;
     LinearLayoutManager linearLayoutManager;
     List<RecentlyJoinedPojo> recentlyJoinedPojos;
+    ImageView emptyImage;
+    TextView emptyText;
 
     // To LogOut
     SharedPreferences pref;
@@ -86,8 +92,15 @@ public class MyWedknotFragment extends Fragment {
         monthButton = view.findViewById(R.id.month_filter);
         month1Button = view.findViewById(R.id.month1_filter);
 
+        animationView = view.findViewById(R.id.animrecent);
+        emptyImage = view.findViewById(R.id.empty_image);
+        emptyText = view.findViewById(R.id.empty_title_text);
+
         filterRecentlyJoin = getActivity().getSharedPreferences("recently_joined", Context.MODE_PRIVATE);
         filterEdit = filterRecentlyJoin.edit();
+
+        emptyView = view.findViewById(R.id.recent_join_empty_view);
+
 
         week1Button.setEnabled(false);
         monthButton.setEnabled(false);
@@ -218,7 +231,7 @@ public class MyWedknotFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 AllFormDetailsPojo allFormDetailsPojo = dataSnapshot.getValue(AllFormDetailsPojo.class);
-                if(allFormDetailsPojo!=null) {
+                if (allFormDetailsPojo != null) {
                     String currentUserName = allFormDetailsPojo.loginDetailsFullName;
                     currentUserGender = allFormDetailsPojo.personalDetailsGender;
                     currentUserNameTextView.setText(currentUserName);
@@ -279,7 +292,9 @@ public class MyWedknotFragment extends Fragment {
                                             adapter = new RecentlyJoinedRecyclerViewAdapter(getActivity(), recentlyJoinedPojos);
                                             recyclerView.setAdapter(adapter);
 
+
                                         }
+
                                     }
 
                                     @Override
@@ -302,7 +317,29 @@ public class MyWedknotFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
+
+
             });
+
+            int count = recentlyJoinedPojos.size();
+            animationView.setVisibility(View.GONE);
+           // Log.v("count",count+"");
+            if(count==0)
+
+            {
+                recyclerView.setVisibility(View.GONE);
+                emptyImage.setVisibility(View.VISIBLE);
+                emptyText.setVisibility(View.VISIBLE);
+                animationView.setVisibility(View.GONE);
+
+            }
+            else
+
+            {
+                recyclerView.setVisibility(View.VISIBLE);
+                emptyView.setVisibility(View.GONE);
+            }
+
 
         } else {
             databaseReference.child("Male").orderByValue().startAt(oneMonthBefore).endAt(currentTime).addValueEventListener(new ValueEventListener() {
@@ -337,6 +374,16 @@ public class MyWedknotFragment extends Fragment {
                                             recentlyJoinedPojos.add(new RecentlyJoinedPojo(fetchedUserName, fetchedUserAge, fetchedUserHeight, fetchedUserMotherTongue, fetchedUserReligion, fetchedUserCity, fetchedUserCountry, finalUserEmail, fetchedUserImage));
                                             adapter = new RecentlyJoinedRecyclerViewAdapter(getActivity(), recentlyJoinedPojos);
                                             recyclerView.setAdapter(adapter);
+                                            int count = recentlyJoinedPojos.size();
+                                            animationView.setVisibility(View.GONE);
+                                            if (count == 0) {
+                                                recyclerView.setVisibility(View.GONE);
+                                                emptyView.setVisibility(View.VISIBLE);
+                                            } else {
+                                                recyclerView.setVisibility(View.VISIBLE);
+                                                emptyView.setVisibility(View.GONE);
+                                            }
+
 
                                         }
                                     }
@@ -365,6 +412,26 @@ public class MyWedknotFragment extends Fragment {
 
                 }
             });
+
+            int count = recentlyJoinedPojos.size();
+            animationView.setVisibility(View.GONE);
+            //Log.v("count",count+"");
+            if(count==0)
+
+            {
+                recyclerView.setVisibility(View.GONE);
+                emptyImage.setVisibility(View.VISIBLE);
+                emptyText.setVisibility(View.VISIBLE);
+                animationView.setVisibility(View.GONE);
+
+            }
+            else
+
+            {
+                recyclerView.setVisibility(View.VISIBLE);
+                emptyView.setVisibility(View.GONE);
+            }
+
 
         }
     }

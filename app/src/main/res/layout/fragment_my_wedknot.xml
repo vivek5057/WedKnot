@@ -203,12 +203,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/recent_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -291,17 +291,64 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/recent_button"
+                android:id="@+id/recent_join_empty_view"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animrecent"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerInParent="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="loadingrecent.json"/>
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/empty_image"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:outlineAmbientShadowColor="@color/mywhite"
+                    android:outlineSpotShadowColor="@color/mywhite"
+                    android:visibility="gone"
+                    android:shadowColor="@color/colorPrimary"
+                    android:translationZ="10dp"
+                    android:src="@drawable/nomatches" />
+
+                <TextView
+                    android:id="@+id/empty_title_text"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/empty_image"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingTop="16dp"
+                    android:text="No Recent Joins..."
+                    android:textAppearance="?android:textAppearanceMedium"/>
+
+
+            </RelativeLayout>
+
 
             <android.support.v7.widget.RecyclerView
+                android:layout_below="@+id/recent_button"
                 android:id="@+id/recently_joined_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"

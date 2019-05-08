@@ -17,9 +17,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:src="@drawable/myicon"
+        android:src="@drawable/defaultimg"
         android:transitionName="chatBoxImage"/>
-
 
     <RelativeLayout
         android:id="@+id/text_name_relative"
@@ -34,7 +33,7 @@
             android:layout_marginTop="25dp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="normal"
-            android:text="Vivek Pandey" />
+            android:text="User Name" />
 
         <View
             android:layout_width="match_parent"

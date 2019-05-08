@@ -12,7 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.acerpc.wedknot.ChatFragmentInside.ChatBoxActivity;
 import com.example.acerpc.wedknot.ChatFragmentInside.ChatListItemPojo;
 import com.example.acerpc.wedknot.ChatFragmentInside.ChatRecycleViewAdapter;
@@ -40,6 +43,9 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
     View view;
     View emptyView;
 
+    LottieAnimationView animationView;
+    ImageView emptyImage;
+    TextView emptyText;
 
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
@@ -53,6 +59,10 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         emptyView = view.findViewById(R.id.chat_empty_view);
+        emptyImage = view.findViewById(R.id.empty_image);
+        emptyText = view.findViewById(R.id.empty_title_text);
+        animationView = view.findViewById(R.id.animchat);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -101,15 +111,6 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
                                     adapter = new ChatRecycleViewAdapter(getActivity(), ChatFragment.this,chatListItemPojos);
                                     recyclerView.setAdapter(adapter);
 
-                                    if (chatListItemPojos.isEmpty()) {
-                                        recyclerView.setVisibility(View.GONE);
-                                        emptyView.setVisibility(View.VISIBLE);
-                                    }
-                                    else {
-                                        recyclerView.setVisibility(View.VISIBLE);
-                                        emptyView.setVisibility(View.GONE);
-                                    }
-
 
                                 }
 
@@ -136,6 +137,26 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
 
             }
         });
+
+        int count = chatListItemPojos.size();
+        animationView.setVisibility(View.GONE);
+        // Log.v("count",count+"");
+        if(count==0)
+
+        {
+            recyclerView.setVisibility(View.GONE);
+            emptyImage.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.VISIBLE);
+            animationView.setVisibility(View.GONE);
+
+        }
+        else
+
+        {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
 
     }
 

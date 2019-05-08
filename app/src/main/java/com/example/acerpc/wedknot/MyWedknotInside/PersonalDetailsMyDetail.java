@@ -60,6 +60,7 @@ public class PersonalDetailsMyDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_details_my_detail);
+        getSupportActionBar().hide();
         init();
         allSpinners();
         readData();

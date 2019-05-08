@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.acerpc.wedknot.InitialForms.AllFormDetailsPojo;
 import com.example.acerpc.wedknot.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +31,10 @@ public class InboxConnectedFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private InboxConnectedAdapter adapter;
     View emptyView;
+    ImageView emptyImage;
+    TextView emptyText;
+    LottieAnimationView animationView;
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -43,6 +50,12 @@ public class InboxConnectedFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         connectedPojoList = new ArrayList<>();
+
+
+        emptyImage = view.findViewById(R.id.empty_image);
+        emptyText = view.findViewById(R.id.empty_title_text);
+        animationView = view.findViewById(R.id.animconnected);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -125,6 +138,29 @@ public class InboxConnectedFragment extends Fragment {
 
             }
         });
+
+        int count = connectedPojoList.size();
+        animationView.setVisibility(View.GONE);
+        // Log.v("count",count+"");
+        if(count==0)
+
+        {
+            recyclerView.setVisibility(View.GONE);
+            emptyImage.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.VISIBLE);
+            animationView.setVisibility(View.GONE);
+
+        }
+        else
+
+        {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
+
     }
 
 }
+
+

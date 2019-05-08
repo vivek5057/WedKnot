@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.acerpc.wedknot.InitialForms.AllFormDetailsPojo;
 import com.example.acerpc.wedknot.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,11 +31,13 @@ public class InterestSentFragment extends Fragment {
     private LinearLayoutManager layoutManager;
     private InterestSentAdapter adapter;
     View emptyView;
+    LottieAnimationView animationView;
+    ImageView emptyImage;
+    TextView emptyText;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +48,10 @@ public class InterestSentFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         sentPojoList = new ArrayList<>();
+
+        emptyImage = view.findViewById(R.id.empty_image);
+        emptyText = view.findViewById(R.id.empty_title_text);
+        animationView = view.findViewById(R.id.animsent);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -124,6 +133,24 @@ public class InterestSentFragment extends Fragment {
 
             }
         });
+
+        int count = sentPojoList.size();
+        animationView.setVisibility(View.GONE);
+        // Log.v("count",count+"");
+        if(count==0)
+
+        {
+            recyclerView.setVisibility(View.GONE);
+            emptyImage.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.VISIBLE);
+            animationView.setVisibility(View.GONE);
+        }
+        else
+        {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
     }
 
 }

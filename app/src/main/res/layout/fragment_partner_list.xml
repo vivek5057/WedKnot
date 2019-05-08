@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/slideprofiles_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 
 
     <RelativeLayout
@@ -16,19 +18,31 @@
         android:gravity="center_vertical"
         android:layout_gravity="center">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animmatches"
+            android:layout_width="200dp"
+            android:elevation="15dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_fileName="loadingrecent.json"/>
+
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/empty_image"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:outlineAmbientShadowColor="@color/mywhite"
             android:outlineSpotShadowColor="@color/mywhite"
+            android:visibility="gone"
             android:shadowColor="@color/colorPrimary"
-            android:elevation="10dp"
             android:translationZ="10dp"
             android:src="@drawable/nomatches" />
 
         <TextView
             android:id="@+id/empty_title_text"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/empty_image"

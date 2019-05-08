@@ -66,7 +66,10 @@ public class ChatRecycleViewAdapter extends RecyclerView.Adapter<ChatRecycleView
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         ChatListItemPojo chatListItemPojo = chatlist.get(i);
         myViewHolder.chatName.setText(chatListItemPojo.getChatname());
-        Glide.with(context).load(chatListItemPojo.getChatimage()).into(myViewHolder.chatImage);
+
+        if(chatListItemPojo.getChatimage()!=null) {
+            Glide.with(context).load(chatListItemPojo.getChatimage()).into(myViewHolder.chatImage);
+        }
     }
 
     @Override

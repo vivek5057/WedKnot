@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/recentlybg">
 
     <android.support.v7.widget.CardView
         android:id="@+id/connected_card_view"
@@ -12,6 +13,9 @@
         android:layout_height="230dp"
         android:layout_margin="10dp"
         app:cardElevation="5dp"
+        android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+        android:outlineSpotShadowColor="@color/colorPrimaryDark"
+        app:cardUseCompatPadding="true"
         card_view:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/mylightgrey">
 
@@ -32,7 +36,7 @@
                 android:shadowColor="@color/colorPrimary"
                 android:elevation="10dp"
                 android:translationZ="10dp"
-                android:src="@drawable/user_profile_pic" />
+                android:src="@drawable/defaultimg" />
 
             <TextView
                 android:id="@+id/inbox_connected_user_name"

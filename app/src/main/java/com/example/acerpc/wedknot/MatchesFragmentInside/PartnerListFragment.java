@@ -9,7 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.acerpc.wedknot.InitialForms.AllFormDetailsPojo;
 import com.example.acerpc.wedknot.InitialForms.FamilyDetailsInitialPojo;
 import com.example.acerpc.wedknot.InitialForms.PartnerPreferencesInitialPojo;
@@ -84,6 +87,9 @@ public class PartnerListFragment extends Fragment {
     String fetchedBodyType;
     String fetchedSkinColor;
 
+    LottieAnimationView animationView;
+    ImageView emptyImage;
+    TextView emptyText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,10 +104,14 @@ public class PartnerListFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        animationView = emptyView.findViewById(R.id.animmatches);
+        emptyImage = view.findViewById(R.id.empty_image);
+        emptyText = view.findViewById(R.id.empty_title_text);
 
         readCurrentUserGender();
         return view;
     }
+
 
     public void readCurrentUserGender() {
 
@@ -271,14 +281,6 @@ public class PartnerListFragment extends Fragment {
                                                                                         matchesProfileSliderAdapter = new MatchesProfileSliderAdapter(getActivity(), matchesPojos, familyDetailsInitialPojos, partnerPreferencesInitialPojos, lifeStylePojos);
                                                                                         viewPager.setAdapter(matchesProfileSliderAdapter);
 
-                                                                                        if (matchesPojos.isEmpty()) {
-                                                                                            viewPager.setVisibility(View.GONE);
-                                                                                            emptyView.setVisibility(View.VISIBLE);
-                                                                                        }
-                                                                                        else {viewPager.setVisibility(View.VISIBLE);
-                                                                                            emptyView.setVisibility(View.GONE);
-                                                                                        }
-
 
                                                                                     }
                                                                                 }
@@ -338,6 +340,36 @@ public class PartnerListFragment extends Fragment {
 
                     }
                 });
+
+
+                    getActivity().runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            int count = matchesPojos.size();
+                            animationView.setVisibility(View.GONE);
+                            //Log.v("count",count+"");
+                            if(count==0)
+
+                            {
+                                viewPager.setVisibility(View.GONE);
+                                emptyImage.setVisibility(View.VISIBLE);
+                                emptyText.setVisibility(View.VISIBLE);
+                                animationView.setVisibility(View.GONE);
+
+                            }
+                            else
+
+                            {
+                                viewPager.setVisibility(View.VISIBLE);
+                                emptyView.setVisibility(View.GONE);
+                            }
+
+
+                        }
+                    });
+
             } else {
                 databaseReference.child("Male").addValueEventListener(new ValueEventListener() {
 
@@ -459,8 +491,9 @@ public class PartnerListFragment extends Fragment {
                                                                                         familyDetailsInitialPojos.add(new FamilyDetailsInitialPojo(fetchedFatherOccupation, fetchedMotherOccupation, fetchedBrothers, fetchedSisters, fetchedFamilyIncome, fetchedFamilyStatus, fetchedFamilyType, fetchedLivingWithParents));
                                                                                         matchesProfileSliderAdapter = new MatchesProfileSliderAdapter(getActivity(), matchesPojos, familyDetailsInitialPojos, partnerPreferencesInitialPojos, lifeStylePojos);
                                                                                         viewPager.setAdapter(matchesProfileSliderAdapter);
-
-                                                                                        if (matchesPojos.isEmpty()) {
+                                                                                        int count = matchesPojos.size();
+                                                                                        animationView.setVisibility(View.GONE);
+                                                                                        if (count==0) {
                                                                                             viewPager.setVisibility(View.GONE);
                                                                                             emptyView.setVisibility(View.VISIBLE);
                                                                                         }
@@ -534,11 +567,42 @@ public class PartnerListFragment extends Fragment {
 
                 });
 
+
+                getActivity().runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        int count = matchesPojos.size();
+                        animationView.setVisibility(View.GONE);
+                        //Log.v("count",count+"");
+                        if(count==0)
+
+                        {
+                            viewPager.setVisibility(View.GONE);
+                            emptyImage.setVisibility(View.VISIBLE);
+                            emptyText.setVisibility(View.VISIBLE);
+                            animationView.setVisibility(View.GONE);
+
+                        }
+                        else
+
+                        {
+                            viewPager.setVisibility(View.VISIBLE);
+                            emptyView.setVisibility(View.GONE);
+                        }
+
+
+                    }
+                });
+
+
             }
 
             return null;
         }
     }
+
 
 
 }

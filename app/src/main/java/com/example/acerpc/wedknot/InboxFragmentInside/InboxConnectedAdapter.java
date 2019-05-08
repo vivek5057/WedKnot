@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,11 +108,13 @@ public class InboxConnectedAdapter extends RecyclerView.Adapter<InboxConnectedAd
         myViewHolder.connectedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InterestReceivedPojo interestReceivedPojo = interestConnectedPojoList.get(i);
+                InterestReceivedPojo interestConnectedPojo = interestConnectedPojoList.get(i);
                 String dotReceiverEmail = interestConnectedPojo.getFriendEmail();
-                Log.v("Hungama",dotReceiverEmail);
+               // Log.v("Hungama",dotReceiverEmail);
                 Intent intent = new Intent(context, UserDetailOnClick.class);
                 intent.putExtra(EXTRA_USERE,dotReceiverEmail);
+                context.startActivity(intent);
+
             }
         });
 

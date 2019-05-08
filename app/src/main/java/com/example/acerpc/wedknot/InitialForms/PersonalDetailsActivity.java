@@ -54,6 +54,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_details_activity);
 
+
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
         heightSpinner = (Spinner) findViewById(R.id.heightSpinner);
         countrySpinner = (Spinner) findViewById(R.id.mycountry);
