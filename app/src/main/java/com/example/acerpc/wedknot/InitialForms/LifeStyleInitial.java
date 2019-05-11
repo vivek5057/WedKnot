@@ -131,7 +131,12 @@ public class LifeStyleInitial extends AppCompatActivity {
     }
 
     public void writeData(){
-        String aboutMeThis = aboutMe.getText().toString();
+        String aboutMeThis;
+        if(aboutMe.getText().toString().isEmpty()){
+            aboutMeThis = "Not Filled";
+        }else{
+            aboutMeThis = aboutMe.getText().toString();
+        }
         String foodThis = food.getSelectedItem().toString();
         String drinkThis = drink.getSelectedItem().toString();
         String smokeThis = smoke.getSelectedItem().toString();

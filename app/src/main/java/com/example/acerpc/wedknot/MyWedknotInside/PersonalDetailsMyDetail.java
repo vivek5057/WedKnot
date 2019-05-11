@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.acerpc.wedknot.InitialForms.AllFormDetailsPojo;
 import com.example.acerpc.wedknot.R;
@@ -69,6 +70,8 @@ public class PersonalDetailsMyDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 writeData();
+                Toast.makeText(PersonalDetailsMyDetail.this, "Saved", Toast.LENGTH_SHORT).show();
+
             }
         });
 

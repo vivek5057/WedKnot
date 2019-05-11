@@ -71,6 +71,7 @@ public class MyFamilyCardFromMyWedknot extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 writeData();
+                Toast.makeText(MyFamilyCardFromMyWedknot.this, "Saved", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -321,25 +321,6 @@ public class MyWedknotFragment extends Fragment {
 
             });
 
-            int count = recentlyJoinedPojos.size();
-            animationView.setVisibility(View.GONE);
-           // Log.v("count",count+"");
-            if(count==0)
-
-            {
-                recyclerView.setVisibility(View.GONE);
-                emptyImage.setVisibility(View.VISIBLE);
-                emptyText.setVisibility(View.VISIBLE);
-                animationView.setVisibility(View.GONE);
-
-            }
-            else
-
-            {
-                recyclerView.setVisibility(View.VISIBLE);
-                emptyView.setVisibility(View.GONE);
-            }
-
 
         } else {
             databaseReference.child("Male").orderByValue().startAt(oneMonthBefore).endAt(currentTime).addValueEventListener(new ValueEventListener() {
@@ -374,15 +355,6 @@ public class MyWedknotFragment extends Fragment {
                                             recentlyJoinedPojos.add(new RecentlyJoinedPojo(fetchedUserName, fetchedUserAge, fetchedUserHeight, fetchedUserMotherTongue, fetchedUserReligion, fetchedUserCity, fetchedUserCountry, finalUserEmail, fetchedUserImage));
                                             adapter = new RecentlyJoinedRecyclerViewAdapter(getActivity(), recentlyJoinedPojos);
                                             recyclerView.setAdapter(adapter);
-                                            int count = recentlyJoinedPojos.size();
-                                            animationView.setVisibility(View.GONE);
-                                            if (count == 0) {
-                                                recyclerView.setVisibility(View.GONE);
-                                                emptyView.setVisibility(View.VISIBLE);
-                                            } else {
-                                                recyclerView.setVisibility(View.VISIBLE);
-                                                emptyView.setVisibility(View.GONE);
-                                            }
 
 
                                         }
@@ -412,25 +384,6 @@ public class MyWedknotFragment extends Fragment {
 
                 }
             });
-
-            int count = recentlyJoinedPojos.size();
-            animationView.setVisibility(View.GONE);
-            //Log.v("count",count+"");
-            if(count==0)
-
-            {
-                recyclerView.setVisibility(View.GONE);
-                emptyImage.setVisibility(View.VISIBLE);
-                emptyText.setVisibility(View.VISIBLE);
-                animationView.setVisibility(View.GONE);
-
-            }
-            else
-
-            {
-                recyclerView.setVisibility(View.VISIBLE);
-                emptyView.setVisibility(View.GONE);
-            }
 
 
         }

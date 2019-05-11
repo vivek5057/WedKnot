@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.acerpc.wedknot.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +62,7 @@ public class LifeStyleMyDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 writeData();
+                Toast.makeText(LifeStyleMyDetail.this, "Saved", Toast.LENGTH_SHORT).show();
             }
         });
 

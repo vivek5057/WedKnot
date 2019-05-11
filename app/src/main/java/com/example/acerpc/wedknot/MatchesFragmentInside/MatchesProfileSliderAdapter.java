@@ -59,7 +59,6 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
 
     }
 
-    String[] username_text = {"aditi5057", "komaljalebi", "iampayal", "simuu199X", "dubey007"};
     Integer[] about_user_info = {R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme};
 
     @Override
@@ -136,11 +135,8 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
         TextView partner_preference_country = view.findViewById(R.id.partner_preference_country);
         partner_preference_country.setText(partnerPreferencesInitialPojoList.get(position).getCountry());
 
-        TextView usernametext = view.findViewById(R.id.username_text);
-        usernametext.setText(username_text[position]);
-
         TextView aboutuserinfo = view.findViewById(R.id.about_user_info);
-        aboutuserinfo.setText(about_user_info[position]);
+        aboutuserinfo.setText(lifeStylePojoList.get(position).getAboutMe());
 
         TextView mobileno = view.findViewById(R.id.mobile_no);
         mobileno.setText(matchesPojoList.get(position).getPartnerMobile());

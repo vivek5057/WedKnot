@@ -263,14 +263,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/username_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Username"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -1037,16 +1029,32 @@
                     android:layout_marginTop="10dp"
                     />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                 <TextView
-                    android:id="@+id/partner_preference_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5'1 to 5'10"
+                    android:text="Mininimum: "
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/mygrey"
                     android:layout_marginBottom="10dp"
                     />
+
+                <TextView
+                    android:id="@+id/partner_preference_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5'1"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/mygrey"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -1222,15 +1230,6 @@
                     android:layout_marginBottom="10dp"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lakh"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/mygrey"
-                    android:layout_marginBottom="10dp"
-                    />
 
                 </LinearLayout>
             </LinearLayout>

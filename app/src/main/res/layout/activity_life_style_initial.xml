@@ -184,7 +184,7 @@
             android:shadowColor="@color/colorAccent"
             android:elevation="10dp"
             android:translationZ="10dp"
-            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
             android:text="SKIP"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#ffffff" />
@@ -197,7 +197,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginRight="80dp"
             android:layout_marginBottom="3dp"
-            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
             android:outlineAmbientShadowColor="@color/mywhite"
             android:outlineSpotShadowColor="@color/mywhite"
             android:shadowColor="@color/colorPrimary"

@@ -108,6 +108,7 @@
             android:outlineSpotShadowColor="@color/mywhite"
             android:shadowColor="@color/colorPrimary"
             android:elevation="10dp"
+            android:backgroundTint="@color/colorPrimary"
             android:translationZ="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

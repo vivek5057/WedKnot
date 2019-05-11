@@ -193,6 +193,7 @@
             android:layout_marginBottom="3dp"
             android:textColor="#ffffff"
             android:background="@drawable/next_button"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="NEXT" />

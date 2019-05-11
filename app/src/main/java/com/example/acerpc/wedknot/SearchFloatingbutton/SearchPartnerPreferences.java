@@ -375,7 +375,6 @@ public class SearchPartnerPreferences extends AppCompatActivity {
                                         }
                                         finalUserEmail = fetchedUserEmail.replace(".", "");
 
-
                                         char[] dividefetchedUserHeight = fetchedUserHeight.toCharArray();
                                         char[] divideUserMinHeight = minHeight.getSelectedItem().toString().toCharArray();
                                         char[] divideUserMaxHeight = maxHeight.getSelectedItem().toString().toCharArray();

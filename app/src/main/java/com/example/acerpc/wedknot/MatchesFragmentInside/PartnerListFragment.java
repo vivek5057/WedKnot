@@ -3,9 +3,11 @@ package com.example.acerpc.wedknot.MatchesFragmentInside;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,59 +35,14 @@ public class PartnerListFragment extends Fragment {
     ViewPager viewPager;
     View emptyView;
     MatchesProfileSliderAdapter matchesProfileSliderAdapter;
-    List<MatchesPojo> matchesPojos;
-    List<FamilyDetailsInitialPojo> familyDetailsInitialPojos;
-    List<PartnerPreferencesInitialPojo> partnerPreferencesInitialPojos;
-    List<LifeStylePojo> lifeStylePojos;
+    static List<MatchesPojo> matchesPojos;
+    static List<FamilyDetailsInitialPojo> familyDetailsInitialPojos;
+    static List<PartnerPreferencesInitialPojo> partnerPreferencesInitialPojos;
+    static List<LifeStylePojo> lifeStylePojos;
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     String currentUserGender;
-    String finalUserHeight;
-    String finalUserMinHeight;
-    String finalUserMaxHeight;
-
-     String fetchedUserName;
-     String fetchedUserAge;
-     String fetchedUserHeight;
-     String fetchedUserMotherTongue;
-     String fetchedUserReligion;
-     String fetchedWorkArea;
-     String fetchedUserCity;
-     String fetchedUserCountry;
-     String fetchedMaritalStatusThis;
-     String fetchedStateThis;
-     String fetchedUserEmail;
-     String fetchedUserMobile;
-     String fetchedUserIncome;
-     String fetchedUserEducation;
-
-     String fetchedFatherOccupation;
-     String fetchedMotherOccupation;
-     String fetchedBrothers;
-     String fetchedSisters;
-     String fetchedFamilyIncome;
-     String fetchedFamilyStatus;
-     String fetchedFamilyType;
-     String fetchedLivingWithParents;
-
-     String fetchedMinAge;
-     String fetchedMaxAge;
-     String fetchedMinHeight;
-     String fetchedMaxHeight;
-     String fetchedReligion;
-     String fetchedLanguage;
-     String fetchedCountry;
-     String fetchedIncome;
-     String fetchedEducation;
-     String fetchedMaritalStatus;
-
-    String fetchedAboutMe;
-    String fetchedFood;
-    String fetchedDrink;
-    String fetchedSmoke;
-    String fetchedBodyType;
-    String fetchedSkinColor;
 
     LottieAnimationView animationView;
     ImageView emptyImage;
@@ -123,7 +80,7 @@ public class PartnerListFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentUserGender = dataSnapshot.getValue(String.class);
 //                Log.v("User Emails: ", currentUserGender);
-                if(currentUserGender!=null) {
+                if (currentUserGender != null) {
                     NewThread newThread = new NewThread();
                     newThread.execute();
                 }
@@ -139,6 +96,50 @@ public class PartnerListFragment extends Fragment {
     }
 
     class NewThread extends AsyncTask {
+
+
+        String fetchedUserName;
+        String fetchedUserAge;
+        String fetchedUserHeight;
+        String fetchedUserMotherTongue;
+        String fetchedUserReligion;
+        String fetchedWorkArea;
+        String fetchedUserCity;
+        String fetchedUserCountry;
+        String fetchedMaritalStatusThis;
+        String fetchedStateThis;
+        String fetchedUserEmail;
+        String fetchedUserMobile;
+        String fetchedUserIncome;
+        String fetchedUserEducation;
+
+        String fetchedFatherOccupation;
+        String fetchedMotherOccupation;
+        String fetchedBrothers;
+        String fetchedSisters;
+        String fetchedFamilyIncome;
+        String fetchedFamilyStatus;
+        String fetchedFamilyType;
+        String fetchedLivingWithParents;
+
+        String fetchedMinAge;
+        String fetchedMaxAge;
+        String fetchedMinHeight;
+        String fetchedMaxHeight;
+        String fetchedReligion;
+        String fetchedLanguage;
+        String fetchedCountry;
+        String fetchedIncome;
+        String fetchedEducation;
+        String fetchedMaritalStatus;
+
+        String fetchedAboutMe;
+        String fetchedFood;
+        String fetchedDrink;
+        String fetchedSmoke;
+        String fetchedBodyType;
+        String fetchedSkinColor;
+
 
         ProgressDialog progDailog = new ProgressDialog(getActivity());
 
@@ -181,62 +182,97 @@ public class PartnerListFragment extends Fragment {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             AllFormDetailsPojo allFormDetailsPojo = dataSnapshot.getValue(AllFormDetailsPojo.class);
-                                            if(allFormDetailsPojo!=null) {
-                                                 fetchedUserName = allFormDetailsPojo.loginDetailsFullName;
-                                                 fetchedUserAge = allFormDetailsPojo.personalDetailsAge;
-                                                 fetchedUserHeight = allFormDetailsPojo.personalDetailsHeight;
-                                                 fetchedUserMotherTongue = allFormDetailsPojo.socialDetailsMotherTongue;
-                                                 fetchedUserReligion = allFormDetailsPojo.socialDetailsReligion;
-                                                 fetchedWorkArea = allFormDetailsPojo.careerDetailsWorkArea;
-                                                 fetchedUserCity = allFormDetailsPojo.personalDetailsCity;
-                                                 fetchedUserCountry = allFormDetailsPojo.personalDetailsCountry;
-                                                 fetchedMaritalStatusThis = allFormDetailsPojo.socialDetailsMartialStatus;
-                                                 fetchedStateThis = allFormDetailsPojo.personalDetailsState;
-                                                 fetchedUserEmail = allFormDetailsPojo.loginDetailsEmailId;
-                                                 fetchedUserMobile = allFormDetailsPojo.loginDetailsPhoneNo;
-                                                 fetchedUserIncome = allFormDetailsPojo.careerDetailsAnnualIncome;
-                                                 fetchedUserEducation = allFormDetailsPojo.careerDetailsHighestEducation;
-
+                                            if (allFormDetailsPojo != null) {
+                                                fetchedUserName = allFormDetailsPojo.loginDetailsFullName;
+                                                fetchedUserAge = allFormDetailsPojo.personalDetailsAge;
+                                                fetchedUserHeight = allFormDetailsPojo.personalDetailsHeight;
+                                                fetchedUserMotherTongue = allFormDetailsPojo.socialDetailsMotherTongue;
+                                                fetchedUserReligion = allFormDetailsPojo.socialDetailsReligion;
+                                                fetchedWorkArea = allFormDetailsPojo.careerDetailsWorkArea;
+                                                fetchedUserCity = allFormDetailsPojo.personalDetailsCity;
+                                                fetchedUserCountry = allFormDetailsPojo.personalDetailsCountry;
+                                                fetchedMaritalStatusThis = allFormDetailsPojo.socialDetailsMartialStatus;
+                                                fetchedStateThis = allFormDetailsPojo.personalDetailsState;
+                                                fetchedUserEmail = allFormDetailsPojo.loginDetailsEmailId;
+                                                fetchedUserMobile = allFormDetailsPojo.loginDetailsPhoneNo;
+                                                fetchedUserIncome = allFormDetailsPojo.careerDetailsAnnualIncome;
+                                                fetchedUserEducation = allFormDetailsPojo.careerDetailsHighestEducation;
 
                                             }
-                                            final String finalUserEmail = fetchedUserEmail.replace(".", "");
+
+                                            final String finalFetchedUserName = fetchedUserName;
+                                            final String finalFetchedUserAge = fetchedUserAge;
+                                            final String finalFetchedUserHeight = fetchedUserHeight;
+                                            final String finalFetchedUserMotherTongue = fetchedUserMotherTongue;
+                                            final String finalFetchedUserReligion = fetchedUserReligion;
+                                            final String finalFetchedWorkArea = fetchedWorkArea;
+                                            final String finalFetchedUserCity = fetchedUserCity;
+                                            final String finalFetchedUserCountry = fetchedUserCountry;
+                                            final String finalFetchedMaritalStatusThis = fetchedMaritalStatusThis;
+                                            final String finalFetchedStateThis = fetchedStateThis;
+                                            final String finalFetchedUserMobile = fetchedUserMobile;
+                                            final String finalFetchedUserIncome = fetchedUserIncome;
+                                            final String finalFetchedUserEducation = fetchedUserEducation;
+                                            final String finalFetchedUserEmail = fetchedUserEmail;
+
+                                            //final String finalUserEmail = fetchedUserEmail.replace(".", "");
 
 
                                             databaseReference.child(userEmailKey).child("FamilyDetails").addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                     FamilyDetailsInitialPojo familyDetailsInitialPojo = dataSnapshot.getValue(FamilyDetailsInitialPojo.class);
-                                                    if(familyDetailsInitialPojo!=null) {
-                                                         fetchedFatherOccupation = familyDetailsInitialPojo.familyfatherOccupation;
-                                                         fetchedMotherOccupation = familyDetailsInitialPojo.familymotherOccupation;
-                                                         fetchedBrothers = familyDetailsInitialPojo.familybrothers;
-                                                         fetchedSisters = familyDetailsInitialPojo.familysisters;
-                                                         fetchedFamilyIncome = familyDetailsInitialPojo.familyIncome;
-                                                         fetchedFamilyStatus = familyDetailsInitialPojo.familyStatus;
-                                                         fetchedFamilyType = familyDetailsInitialPojo.familyTypeSpinner;
-                                                         fetchedLivingWithParents = familyDetailsInitialPojo.familylivingWithParents;
+                                                    if (familyDetailsInitialPojo != null) {
+                                                        fetchedFatherOccupation = familyDetailsInitialPojo.familyfatherOccupation;
+                                                        fetchedMotherOccupation = familyDetailsInitialPojo.familymotherOccupation;
+                                                        fetchedBrothers = familyDetailsInitialPojo.familybrothers;
+                                                        fetchedSisters = familyDetailsInitialPojo.familysisters;
+                                                        fetchedFamilyIncome = familyDetailsInitialPojo.familyIncome;
+                                                        fetchedFamilyStatus = familyDetailsInitialPojo.familyStatus;
+                                                        fetchedFamilyType = familyDetailsInitialPojo.familyTypeSpinner;
+                                                        fetchedLivingWithParents = familyDetailsInitialPojo.familylivingWithParents;
                                                     }
+
+                                                    final String finalFetchedFatherOccupation = fetchedFatherOccupation;
+                                                    final String finalFetchedMotherOccupation = fetchedMotherOccupation;
+                                                    final String finalFetchedBrothers = fetchedBrothers;
+                                                    final String finalFetchedSisters = fetchedSisters;
+                                                    final String finalFetchedFamilyIncome = fetchedFamilyIncome;
+                                                    final String finalFetchedFamilyStatus = fetchedFamilyStatus;
+                                                    final String finalFetchedFamilyType = fetchedFamilyType;
+                                                    final String finalFetchedLivingWithParents = fetchedLivingWithParents;
 
                                                     databaseReference.child(userEmailKey).child("PartnerPreferences").addValueEventListener(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                             final PartnerPreferencesInitialPojo partnerPreferencesInitialPojo = dataSnapshot.getValue(PartnerPreferencesInitialPojo.class);
-                                                            if(partnerPreferencesInitialPojo!=null) {
-                                                                 fetchedMinAge = partnerPreferencesInitialPojo.minAge;
-                                                                 fetchedMaxAge = partnerPreferencesInitialPojo.maxAge;
-                                                                 fetchedMinHeight = partnerPreferencesInitialPojo.minHeight;
-                                                                 fetchedMaxHeight = partnerPreferencesInitialPojo.maxHeight;
-                                                                 fetchedReligion = partnerPreferencesInitialPojo.religion;
-                                                                 fetchedLanguage = partnerPreferencesInitialPojo.motherTongue;
-                                                                 fetchedCountry = partnerPreferencesInitialPojo.country;
-                                                                 fetchedIncome = partnerPreferencesInitialPojo.income;
-                                                                 fetchedEducation = partnerPreferencesInitialPojo.education;
-                                                                 fetchedMaritalStatus = partnerPreferencesInitialPojo.maritalStatus;
+                                                            if (partnerPreferencesInitialPojo != null) {
+                                                                fetchedMinAge = partnerPreferencesInitialPojo.minAge;
+                                                                fetchedMaxAge = partnerPreferencesInitialPojo.maxAge;
+                                                                fetchedMinHeight = partnerPreferencesInitialPojo.minHeight;
+                                                                fetchedMaxHeight = partnerPreferencesInitialPojo.maxHeight;
+                                                                fetchedReligion = partnerPreferencesInitialPojo.religion;
+                                                                fetchedLanguage = partnerPreferencesInitialPojo.motherTongue;
+                                                                fetchedCountry = partnerPreferencesInitialPojo.country;
+                                                                fetchedIncome = partnerPreferencesInitialPojo.income;
+                                                                fetchedEducation = partnerPreferencesInitialPojo.education;
+                                                                fetchedMaritalStatus = partnerPreferencesInitialPojo.maritalStatus;
                                                             }
 
-                                                            char[] dividefetchedUserHeight = fetchedUserHeight.toCharArray();
-                                                            char[] divideUserMinHeight = fetchedMinHeight.toCharArray();
-                                                            char[] divideUserMaxHeight = fetchedMaxHeight.toCharArray();
+                                                            final String finalFetchedMinAge = fetchedMinAge;
+                                                            final String finalFetchedMaxAge = fetchedMaxAge;
+                                                            final String finalFetchedMinHeight = fetchedMinHeight;
+                                                            final String finalFetchedMaxHeight = fetchedMaxHeight;
+                                                            final String finalFetchedReligion = fetchedReligion;
+                                                            final String finalFetchedLanguage = fetchedLanguage;
+                                                            final String finalFetchedCountry = fetchedCountry;
+                                                            final String finalFetchedIncome = fetchedIncome;
+                                                            final String finalFetchedEducation = fetchedEducation;
+                                                            final String finalFetchedMaritalStatus = fetchedMaritalStatus;
+
+                                                            char[] dividefetchedUserHeight = finalFetchedUserHeight.toCharArray();
+                                                            char[] divideUserMinHeight = finalFetchedMinHeight.toCharArray();
+                                                            char[] divideUserMaxHeight = finalFetchedMaxHeight.toCharArray();
 
                                                             String convertHeight = "";
                                                             String convertMinHeight = "";
@@ -248,36 +284,44 @@ public class PartnerListFragment extends Fragment {
                                                                 convertMaxHeight = convertMaxHeight + divideUserMaxHeight[i];
                                                             }
 
-                                                            finalUserHeight = convertHeight.replace(".", "");
-                                                            finalUserMinHeight = convertMinHeight.replace(".", "");
-                                                            finalUserMaxHeight = convertMaxHeight.replace(".", "");
+                                                            final String finalUserHeight = convertHeight.replace(".", "");
+                                                            final String finalUserMinHeight = convertMinHeight.replace(".", "");
+                                                            final String finalUserMaxHeight = convertMaxHeight.replace(".", "");
 
 
                                                             databaseReference.child(userEmailKey).child("LifeStyleDetail").addValueEventListener(new ValueEventListener() {
                                                                 @Override
                                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                     LifeStylePojo lifeStylePojo = dataSnapshot.getValue(LifeStylePojo.class);
-                                                                    if(lifeStylePojo!=null) {
-                                                                         fetchedAboutMe = lifeStylePojo.aboutMe;
-                                                                         fetchedFood = lifeStylePojo.food;
-                                                                         fetchedDrink = lifeStylePojo.drink;
-                                                                         fetchedSmoke = lifeStylePojo.smoke;
-                                                                         fetchedBodyType = lifeStylePojo.bodyType;
-                                                                         fetchedSkinColor = lifeStylePojo.skinColor;
+                                                                    if (lifeStylePojo != null) {
+                                                                        fetchedAboutMe = lifeStylePojo.aboutMe;
+                                                                        fetchedFood = lifeStylePojo.food;
+                                                                        fetchedDrink = lifeStylePojo.drink;
+                                                                        fetchedSmoke = lifeStylePojo.smoke;
+                                                                        fetchedBodyType = lifeStylePojo.bodyType;
+                                                                        fetchedSkinColor = lifeStylePojo.skinColor;
                                                                     }
 
-                                                                    if (Integer.parseInt(fetchedUserAge) >= Integer.parseInt(fetchedMinAge) && Integer.parseInt(fetchedUserAge) <= Integer.parseInt(fetchedMaxAge)) {
+                                                                    String finalFetchedAboutMe = fetchedAboutMe;
+                                                                    String finalFetchedFood = fetchedFood;
+                                                                    String finalFetchedDrink = fetchedDrink;
+                                                                    String finalFetchedSmoke = fetchedSmoke;
+                                                                    String finalFetchedBodyType = fetchedBodyType;
+                                                                    String finalFetchedSkinColor = fetchedSkinColor;
+
+
+                                                                    if (Integer.parseInt(finalFetchedUserAge) >= Integer.parseInt(finalFetchedMinAge) && Integer.parseInt(finalFetchedUserAge) <= Integer.parseInt(finalFetchedMaxAge)) {
                                                                         if (Integer.parseInt(finalUserHeight) >= Integer.parseInt(finalUserMinHeight) && Integer.parseInt(finalUserHeight) <= Integer.parseInt(finalUserMaxHeight)) {
-                                                                            if (fetchedUserReligion.equals(fetchedReligion)) {
-                                                                                if (fetchedUserMotherTongue.equals(fetchedLanguage)) {
-                                                                                    if (fetchedUserCountry.equals(fetchedCountry)) {
+                                                                            if (finalFetchedUserReligion.equals(finalFetchedReligion)) {
+                                                                                if (finalFetchedUserMotherTongue.equals(finalFetchedLanguage)) {
+                                                                                    if (finalFetchedUserCountry.equals(finalFetchedCountry)) {
 
-                                                                                        //  Log.v("Fetched Data", fetchedUserName + " " + fetchedUserAge + " " + fetchedUserHeight + " " + fetchedUserMotherTongue + " " + fetchedUserReligion + " " + fetchedWorkArea + " " + fetchedUserCity + " " + fetchedUserCountry + " " + fetchedUserImage);
+                                                                                        //Log.v("finalFetched Data", finalFetchedUserName + " " + finalFetchedUserAge + " " + finalFetchedUserHeight + " " + finalFetchedUserMotherTongue + " " + finalFetchedUserReligion + " " + finalFetchedWorkArea + " " + finalFetchedUserCity + " " + finalFetchedUserCountry + " " + fetchedUserImage);
 
-                                                                                        matchesPojos.add(new MatchesPojo(fetchedUserName, fetchedUserImage, fetchedUserAge, fetchedUserHeight, fetchedUserMotherTongue, fetchedUserReligion, fetchedWorkArea, fetchedUserCity, fetchedUserCountry, fetchedUserMobile, finalUserEmail, fetchedMaritalStatusThis, fetchedStateThis, fetchedUserEducation, fetchedUserIncome));
-                                                                                        partnerPreferencesInitialPojos.add(new PartnerPreferencesInitialPojo(fetchedMinAge, fetchedMaxAge, fetchedMinHeight, fetchedMaxHeight, fetchedReligion, fetchedLanguage, fetchedCountry, fetchedIncome, fetchedEducation, fetchedMaritalStatus));
-                                                                                        lifeStylePojos.add(new LifeStylePojo(fetchedAboutMe, fetchedFood, fetchedDrink, fetchedSmoke, fetchedSkinColor, fetchedBodyType));
-                                                                                        familyDetailsInitialPojos.add(new FamilyDetailsInitialPojo(fetchedFatherOccupation, fetchedMotherOccupation, fetchedBrothers, fetchedSisters, fetchedFamilyIncome, fetchedFamilyStatus, fetchedFamilyType, fetchedLivingWithParents));
+                                                                                        matchesPojos.add(new MatchesPojo(finalFetchedUserName, fetchedUserImage, finalFetchedUserAge, finalFetchedUserHeight, finalFetchedUserMotherTongue, finalFetchedUserReligion, finalFetchedWorkArea, finalFetchedUserCity, finalFetchedUserCountry, finalFetchedUserMobile, finalFetchedUserEmail, finalFetchedMaritalStatusThis, finalFetchedStateThis, finalFetchedUserEducation, finalFetchedUserIncome));
+                                                                                        partnerPreferencesInitialPojos.add(new PartnerPreferencesInitialPojo(finalFetchedMinAge, finalFetchedMaxAge, finalFetchedMinHeight, finalFetchedMaxHeight, finalFetchedReligion, finalFetchedLanguage, finalFetchedCountry, finalFetchedIncome, finalFetchedEducation, finalFetchedMaritalStatus));
+                                                                                        lifeStylePojos.add(new LifeStylePojo(finalFetchedAboutMe, finalFetchedFood, finalFetchedDrink, finalFetchedSmoke, finalFetchedSkinColor, finalFetchedBodyType));
+                                                                                        familyDetailsInitialPojos.add(new FamilyDetailsInitialPojo(finalFetchedFatherOccupation, finalFetchedMotherOccupation, finalFetchedBrothers, finalFetchedSisters, finalFetchedFamilyIncome, finalFetchedFamilyStatus, finalFetchedFamilyType, finalFetchedLivingWithParents));
                                                                                         matchesProfileSliderAdapter = new MatchesProfileSliderAdapter(getActivity(), matchesPojos, familyDetailsInitialPojos, partnerPreferencesInitialPojos, lifeStylePojos);
                                                                                         viewPager.setAdapter(matchesProfileSliderAdapter);
 
@@ -341,41 +385,15 @@ public class PartnerListFragment extends Fragment {
                     }
                 });
 
-
-                    getActivity().runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            int count = matchesPojos.size();
-                            animationView.setVisibility(View.GONE);
-                            //Log.v("count",count+"");
-                            if(count==0)
-
-                            {
-                                viewPager.setVisibility(View.GONE);
-                                emptyImage.setVisibility(View.VISIBLE);
-                                emptyText.setVisibility(View.VISIBLE);
-                                animationView.setVisibility(View.GONE);
-
-                            }
-                            else
-
-                            {
-                                viewPager.setVisibility(View.VISIBLE);
-                                emptyView.setVisibility(View.GONE);
-                            }
-
-
-                        }
-                    });
-
             } else {
                 databaseReference.child("Male").addValueEventListener(new ValueEventListener() {
 
-
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        matchesPojos.clear();
+                        lifeStylePojos.clear();
+                        familyDetailsInitialPojos.clear();
+                        partnerPreferencesInitialPojos.clear();
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             final String userEmailKey = postSnapshot.getKey();
                             //    Log.v("User Emails: ", userEmailKey);
@@ -391,7 +409,7 @@ public class PartnerListFragment extends Fragment {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             AllFormDetailsPojo allFormDetailsPojo = dataSnapshot.getValue(AllFormDetailsPojo.class);
-                                            if(allFormDetailsPojo!=null) {
+                                            if (allFormDetailsPojo != null) {
                                                 fetchedUserName = allFormDetailsPojo.loginDetailsFullName;
                                                 fetchedUserAge = allFormDetailsPojo.personalDetailsAge;
                                                 fetchedUserHeight = allFormDetailsPojo.personalDetailsHeight;
@@ -408,43 +426,82 @@ public class PartnerListFragment extends Fragment {
                                                 fetchedUserEducation = allFormDetailsPojo.careerDetailsHighestEducation;
 
                                             }
-                                            final String finalUserEmail = fetchedUserEmail.replace(".", "");
+
+                                            final String finalFetchedUserName = fetchedUserName;
+                                            final String finalFetchedUserAge = fetchedUserAge;
+                                            final String finalFetchedUserHeight = fetchedUserHeight;
+                                            final String finalFetchedUserMotherTongue = fetchedUserMotherTongue;
+                                            final String finalFetchedUserReligion = fetchedUserReligion;
+                                            final String finalFetchedWorkArea = fetchedWorkArea;
+                                            final String finalFetchedUserCity = fetchedUserCity;
+                                            final String finalFetchedUserCountry = fetchedUserCountry;
+                                            final String finalFetchedMaritalStatusThis = fetchedMaritalStatusThis;
+                                            final String finalFetchedStateThis = fetchedStateThis;
+                                            final String finalFetchedUserMobile = fetchedUserMobile;
+                                            final String finalFetchedUserIncome = fetchedUserIncome;
+                                            final String finalFetchedUserEducation = fetchedUserEducation;
+                                            final String finalFetchedUserEmail = fetchedUserEmail;
+
+                                            // final String finalUserEmail = fetchedUserEmail.replace(".", "");
 
                                             databaseReference.child(userEmailKey).child("FamilyDetails").addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                     FamilyDetailsInitialPojo familyDetailsInitialPojo = dataSnapshot.getValue(FamilyDetailsInitialPojo.class);
-                                                    if(familyDetailsInitialPojo!=null) {
-                                                         fetchedFatherOccupation = familyDetailsInitialPojo.familyfatherOccupation;
-                                                         fetchedMotherOccupation = familyDetailsInitialPojo.familymotherOccupation;
-                                                         fetchedBrothers = familyDetailsInitialPojo.familybrothers;
-                                                         fetchedSisters = familyDetailsInitialPojo.familysisters;
-                                                         fetchedFamilyIncome = familyDetailsInitialPojo.familyIncome;
-                                                         fetchedFamilyStatus = familyDetailsInitialPojo.familyStatus;
-                                                         fetchedFamilyType = familyDetailsInitialPojo.familyTypeSpinner;
-                                                         fetchedLivingWithParents = familyDetailsInitialPojo.familylivingWithParents;
+                                                    if (familyDetailsInitialPojo != null) {
+                                                        fetchedFatherOccupation = familyDetailsInitialPojo.familyfatherOccupation;
+                                                        fetchedMotherOccupation = familyDetailsInitialPojo.familymotherOccupation;
+                                                        fetchedBrothers = familyDetailsInitialPojo.familybrothers;
+                                                        fetchedSisters = familyDetailsInitialPojo.familysisters;
+                                                        fetchedFamilyIncome = familyDetailsInitialPojo.familyIncome;
+                                                        fetchedFamilyStatus = familyDetailsInitialPojo.familyStatus;
+                                                        fetchedFamilyType = familyDetailsInitialPojo.familyTypeSpinner;
+                                                        fetchedLivingWithParents = familyDetailsInitialPojo.familylivingWithParents;
                                                     }
+
+
+                                                    final String finalFetchedFatherOccupation = fetchedFatherOccupation;
+                                                    final String finalFetchedMotherOccupation = fetchedMotherOccupation;
+                                                    final String finalFetchedBrothers = fetchedBrothers;
+                                                    final String finalFetchedSisters = fetchedSisters;
+                                                    final String finalFetchedFamilyIncome = fetchedFamilyIncome;
+                                                    final String finalFetchedFamilyStatus = fetchedFamilyStatus;
+                                                    final String finalFetchedFamilyType = fetchedFamilyType;
+                                                    final String finalFetchedLivingWithParents = fetchedLivingWithParents;
+
 
                                                     databaseReference.child(userEmailKey).child("PartnerPreferences").addValueEventListener(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                             PartnerPreferencesInitialPojo partnerPreferencesInitialPojo = dataSnapshot.getValue(PartnerPreferencesInitialPojo.class);
-                                                            if(partnerPreferencesInitialPojo!=null) {
-                                                                 fetchedMinAge = partnerPreferencesInitialPojo.minAge;
-                                                                 fetchedMaxAge = partnerPreferencesInitialPojo.maxAge;
-                                                                 fetchedMinHeight = partnerPreferencesInitialPojo.minHeight;
-                                                                 fetchedMaxHeight = partnerPreferencesInitialPojo.maxHeight;
-                                                                 fetchedReligion = partnerPreferencesInitialPojo.religion;
-                                                                 fetchedLanguage = partnerPreferencesInitialPojo.motherTongue;
-                                                                 fetchedCountry = partnerPreferencesInitialPojo.country;
-                                                                 fetchedIncome = partnerPreferencesInitialPojo.income;
-                                                                 fetchedEducation = partnerPreferencesInitialPojo.education;
-                                                                 fetchedMaritalStatus = partnerPreferencesInitialPojo.maritalStatus;
+                                                            if (partnerPreferencesInitialPojo != null) {
+                                                                fetchedMinAge = partnerPreferencesInitialPojo.minAge;
+                                                                fetchedMaxAge = partnerPreferencesInitialPojo.maxAge;
+                                                                fetchedMinHeight = partnerPreferencesInitialPojo.minHeight;
+                                                                fetchedMaxHeight = partnerPreferencesInitialPojo.maxHeight;
+                                                                fetchedReligion = partnerPreferencesInitialPojo.religion;
+                                                                fetchedLanguage = partnerPreferencesInitialPojo.motherTongue;
+                                                                fetchedCountry = partnerPreferencesInitialPojo.country;
+                                                                fetchedIncome = partnerPreferencesInitialPojo.income;
+                                                                fetchedEducation = partnerPreferencesInitialPojo.education;
+                                                                fetchedMaritalStatus = partnerPreferencesInitialPojo.maritalStatus;
                                                             }
 
-                                                            char[] dividefetchedUserHeight = fetchedUserHeight.toCharArray();
-                                                            char[] divideUserMinHeight = fetchedMinHeight.toCharArray();
-                                                            char[] divideUserMaxHeight = fetchedMaxHeight.toCharArray();
+                                                            final String finalFetchedMinAge = fetchedMinAge;
+                                                            final String finalFetchedMaxAge = fetchedMaxAge;
+                                                            final String finalFetchedMinHeight = fetchedMinHeight;
+                                                            final String finalFetchedMaxHeight = fetchedMaxHeight;
+                                                            final String finalFetchedReligion = fetchedReligion;
+                                                            final String finalFetchedLanguage = fetchedLanguage;
+                                                            final String finalFetchedCountry = fetchedCountry;
+                                                            final String finalFetchedIncome = fetchedIncome;
+                                                            final String finalFetchedEducation = fetchedEducation;
+                                                            final String finalFetchedMaritalStatus = fetchedMaritalStatus;
+
+
+                                                            char[] dividefetchedUserHeight = finalFetchedUserHeight.toCharArray();
+                                                            char[] divideUserMinHeight = finalFetchedMinHeight.toCharArray();
+                                                            char[] divideUserMaxHeight = finalFetchedMaxHeight.toCharArray();
 
                                                             String convertHeight = "";
                                                             String convertMinHeight = "";
@@ -456,9 +513,10 @@ public class PartnerListFragment extends Fragment {
                                                                 convertMaxHeight = convertMaxHeight + divideUserMaxHeight[i];
                                                             }
 
-                                                            finalUserHeight = convertHeight.replace(".", "");
-                                                            finalUserMinHeight = convertMinHeight.replace(".", "");
-                                                            finalUserMaxHeight = convertMaxHeight.replace(".", "");
+                                                            String finalUserHeight = convertHeight.replace(".", "");
+                                                            String finalUserMinHeight = convertMinHeight.replace(".", "");
+                                                            String finalUserMaxHeight = convertMaxHeight.replace(".", "");
+
                                                             final int ffinalhieght = Integer.parseInt(finalUserHeight);
                                                             final int ffinalminhieght = Integer.parseInt(finalUserMinHeight);
                                                             final int ffinalmaxhieght = Integer.parseInt(finalUserMaxHeight);
@@ -468,8 +526,8 @@ public class PartnerListFragment extends Fragment {
                                                                 @Override
                                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                     LifeStylePojo lifeStylePojo = dataSnapshot.getValue(LifeStylePojo.class);
-                                                                    if(lifeStylePojo!=null) {
-                                                                       fetchedAboutMe = lifeStylePojo.aboutMe;
+                                                                    if (lifeStylePojo != null) {
+                                                                        fetchedAboutMe = lifeStylePojo.aboutMe;
                                                                         fetchedFood = lifeStylePojo.food;
                                                                         fetchedDrink = lifeStylePojo.drink;
                                                                         fetchedSmoke = lifeStylePojo.smoke;
@@ -477,29 +535,28 @@ public class PartnerListFragment extends Fragment {
                                                                         fetchedSkinColor = lifeStylePojo.skinColor;
                                                                     }
 
-                                                                    if (Integer.parseInt(fetchedUserAge) >= Integer.parseInt(fetchedMinAge) && Integer.parseInt(fetchedUserAge) <= Integer.parseInt(fetchedMaxAge)) {
+                                                                    String finalFetchedAboutMe = fetchedAboutMe;
+                                                                    String finalFetchedFood = fetchedFood;
+                                                                    String finalFetchedDrink = fetchedDrink;
+                                                                    String finalFetchedSmoke = fetchedSmoke;
+                                                                    String finalFetchedBodyType = fetchedBodyType;
+                                                                    String finalFetchedSkinColor = fetchedSkinColor;
+
+
+                                                                    if (Integer.parseInt(finalFetchedUserAge) >= Integer.parseInt(finalFetchedMinAge) && Integer.parseInt(finalFetchedUserAge) <= Integer.parseInt(finalFetchedMaxAge)) {
                                                                         if (ffinalhieght >= ffinalminhieght && ffinalhieght <= ffinalmaxhieght) {
-                                                                            if (fetchedUserReligion.equals(fetchedReligion)) {
-                                                                                if (fetchedUserMotherTongue.equals(fetchedLanguage)) {
-                                                                                    if (fetchedUserCountry.equals(fetchedCountry)) {
+                                                                            if (finalFetchedUserReligion.equals(finalFetchedReligion)) {
+                                                                                if (finalFetchedUserMotherTongue.equals(finalFetchedLanguage)) {
+                                                                                    if (finalFetchedUserCountry.equals(finalFetchedCountry)) {
 
-                                                                                        //      Log.v("Fetched Data", fetchedUserName + " " + fetchedUserAge + " " + fetchedUserHeight + " " + fetchedUserMotherTongue + " " + fetchedUserReligion + " " + fetchedWorkArea + " " + fetchedUserCity + " " + fetchedUserCountry + " " + fetchedUserImage);
+                                                                                        //      Log.v("finalFetched Data", finalFetchedUserName + " " + finalFetchedUserAge + " " + finalFetchedUserHeight + " " + finalFetchedUserMotherTongue + " " + finalFetchedUserReligion + " " + finalFetchedWorkArea + " " + finalFetchedUserCity + " " + finalFetchedUserCountry + " " + finalFetchedUserImage);
 
-                                                                                        matchesPojos.add(new MatchesPojo(fetchedUserName, fetchedUserImage, fetchedUserAge, fetchedUserHeight, fetchedUserMotherTongue, fetchedUserReligion, fetchedWorkArea, fetchedUserCity, fetchedUserCountry, fetchedUserMobile, finalUserEmail, fetchedMaritalStatusThis, fetchedStateThis, fetchedUserEducation, fetchedUserIncome));
-                                                                                        partnerPreferencesInitialPojos.add(new PartnerPreferencesInitialPojo(fetchedMinAge, fetchedMaxAge, fetchedMinHeight, fetchedMaxHeight, fetchedReligion, fetchedLanguage, fetchedCountry, fetchedIncome, fetchedEducation, fetchedMaritalStatus));
-                                                                                        lifeStylePojos.add(new LifeStylePojo(fetchedAboutMe, fetchedFood, fetchedDrink, fetchedSmoke, fetchedSkinColor, fetchedBodyType));
-                                                                                        familyDetailsInitialPojos.add(new FamilyDetailsInitialPojo(fetchedFatherOccupation, fetchedMotherOccupation, fetchedBrothers, fetchedSisters, fetchedFamilyIncome, fetchedFamilyStatus, fetchedFamilyType, fetchedLivingWithParents));
+                                                                                        matchesPojos.add(new MatchesPojo(finalFetchedUserName, fetchedUserImage, finalFetchedUserAge, finalFetchedUserHeight, finalFetchedUserMotherTongue, finalFetchedUserReligion, finalFetchedWorkArea, finalFetchedUserCity, finalFetchedUserCountry, finalFetchedUserMobile, finalFetchedUserEmail, finalFetchedMaritalStatusThis, finalFetchedStateThis, finalFetchedUserEducation, finalFetchedUserIncome));
+                                                                                        partnerPreferencesInitialPojos.add(new PartnerPreferencesInitialPojo(finalFetchedMinAge, finalFetchedMaxAge, finalFetchedMinHeight, finalFetchedMaxHeight, finalFetchedReligion, finalFetchedLanguage, finalFetchedCountry, finalFetchedIncome, finalFetchedEducation, finalFetchedMaritalStatus));
+                                                                                        lifeStylePojos.add(new LifeStylePojo(finalFetchedAboutMe, finalFetchedFood, finalFetchedDrink, finalFetchedSmoke, finalFetchedSkinColor, finalFetchedBodyType));
+                                                                                        familyDetailsInitialPojos.add(new FamilyDetailsInitialPojo(finalFetchedFatherOccupation, finalFetchedMotherOccupation, finalFetchedBrothers, finalFetchedSisters, finalFetchedFamilyIncome, finalFetchedFamilyStatus, finalFetchedFamilyType, finalFetchedLivingWithParents));
                                                                                         matchesProfileSliderAdapter = new MatchesProfileSliderAdapter(getActivity(), matchesPojos, familyDetailsInitialPojos, partnerPreferencesInitialPojos, lifeStylePojos);
                                                                                         viewPager.setAdapter(matchesProfileSliderAdapter);
-                                                                                        int count = matchesPojos.size();
-                                                                                        animationView.setVisibility(View.GONE);
-                                                                                        if (count==0) {
-                                                                                            viewPager.setVisibility(View.GONE);
-                                                                                            emptyView.setVisibility(View.VISIBLE);
-                                                                                        }
-                                                                                        else {viewPager.setVisibility(View.VISIBLE);
-                                                                                            emptyView.setVisibility(View.GONE);
-                                                                                        }
 
                                                                                     }
                                                                                 }
@@ -568,41 +625,22 @@ public class PartnerListFragment extends Fragment {
                 });
 
 
-                getActivity().runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        int count = matchesPojos.size();
-                        animationView.setVisibility(View.GONE);
-                        //Log.v("count",count+"");
-                        if(count==0)
-
-                        {
-                            viewPager.setVisibility(View.GONE);
-                            emptyImage.setVisibility(View.VISIBLE);
-                            emptyText.setVisibility(View.VISIBLE);
-                            animationView.setVisibility(View.GONE);
-
-                        }
-                        else
-
-                        {
-                            viewPager.setVisibility(View.VISIBLE);
-                            emptyView.setVisibility(View.GONE);
-                        }
-
-
-                    }
-                });
-
-
             }
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    animationView.setVisibility(View.GONE);
+
+
+                }
+            });
+
+
 
             return null;
         }
     }
-
-
 
 }

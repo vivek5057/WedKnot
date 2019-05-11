@@ -286,6 +286,7 @@
         android:layout_margin="20dp"
         android:text="Next"
         android:textSize="24dp"
+        android:backgroundTint="@color/colorPrimary"
         android:outlineAmbientShadowColor="@color/mywhite"
         android:outlineSpotShadowColor="@color/mywhite"
         android:shadowColor="@color/colorPrimary"

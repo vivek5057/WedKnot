@@ -81,6 +81,7 @@ public class BasicDetailsMyPartner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 writeData();
+                Toast.makeText(BasicDetailsMyPartner.this, "Saved", Toast.LENGTH_SHORT).show();
 
             }
         });

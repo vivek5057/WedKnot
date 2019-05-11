@@ -194,13 +194,13 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nested_my_wedknot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/recentlybg"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -209,9 +209,11 @@
 
             <LinearLayout
                 android:id="@+id/recent_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/mywhite"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:paddingBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -235,8 +237,8 @@
                         android:background="@drawable/next_button"
                         android:backgroundTint="@color/colorAccent"
                         android:text="Week"
-                        android:visibility="invisible"
-                        android:textColor="@color/mywhite" />
+                        android:textColor="@color/mywhite"
+                        android:visibility="invisible" />
 
                     <Button
                         android:id="@+id/week1_filter"
@@ -258,14 +260,14 @@
                         android:layout_toRightOf="@+id/week_filter"
                         android:background="@drawable/next_button"
                         android:backgroundTint="@color/mygrey"
-                        android:visibility="invisible"
-                        android:text="Month"
+                        android:elevation="10dp"
                         android:outlineAmbientShadowColor="@color/mywhite"
                         android:outlineSpotShadowColor="@color/mywhite"
                         android:shadowColor="@color/colorPrimary"
-                        android:elevation="10dp"
+                        android:text="Month"
+                        android:textColor="@color/mywhite"
                         android:translationZ="10dp"
-                        android:textColor="@color/mywhite" />
+                        android:visibility="invisible" />
 
 
                     <Button
@@ -277,14 +279,13 @@
                         android:layout_toRightOf="@+id/week_filter"
                         android:background="@drawable/next_button"
                         android:backgroundTint="@color/colorAccent"
+                        android:elevation="10dp"
                         android:outlineAmbientShadowColor="@color/mywhite"
                         android:outlineSpotShadowColor="@color/mywhite"
                         android:shadowColor="@color/colorPrimary"
-                        android:elevation="10dp"
-                        android:translationZ="10dp"
                         android:text="Month"
-                        android:textColor="@color/mywhite" />
-
+                        android:textColor="@color/mywhite"
+                        android:translationZ="10dp" />
 
 
                 </RelativeLayout>
@@ -292,12 +293,12 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/recent_button"
                 android:id="@+id/recent_join_empty_view"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recent_button"
                 android:layout_centerInParent="true"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="10dp">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/animrecent"
@@ -305,8 +306,8 @@
                     android:layout_height="200dp"
                     android:layout_centerInParent="true"
                     app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_fileName="loadingrecent.json"/>
+                    app:lottie_fileName="loadingrecent.json"
+                    app:lottie_loop="true" />
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -315,14 +316,13 @@
                     android:layout_height="250dp"
                     android:outlineAmbientShadowColor="@color/mywhite"
                     android:outlineSpotShadowColor="@color/mywhite"
-                    android:visibility="gone"
                     android:shadowColor="@color/colorPrimary"
+                    android:src="@drawable/nomatches"
                     android:translationZ="10dp"
-                    android:src="@drawable/nomatches" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/empty_title_text"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/empty_image"
@@ -330,17 +330,18 @@
                     android:fontFamily="sans-serif-medium"
                     android:paddingTop="16dp"
                     android:text="No Recent Joins..."
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
 
 
             <android.support.v7.widget.RecyclerView
-                android:layout_below="@+id/recent_button"
                 android:id="@+id/recently_joined_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/recent_button"
                 android:layout_marginTop="10dp" />
 
 
