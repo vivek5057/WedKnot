@@ -17,6 +17,7 @@ public class MatchesForSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches_for_search);
+        getSupportActionBar().hide();
         init();
     }
 

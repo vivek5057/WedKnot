@@ -45,7 +45,6 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
 
-
     public MatchesProfileSliderAdapter(Context context, List<MatchesPojo> matchesPojoList, List<FamilyDetailsInitialPojo> familyDetailsInitialPojoList, List<PartnerPreferencesInitialPojo> partnerPreferencesInitialPojoList, List<LifeStylePojo> lifeStylePojoList) {
         this.context = context;
         this.matchesPojoList = matchesPojoList;
@@ -59,7 +58,7 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
 
     }
 
-    Integer[] about_user_info = {R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme};
+    //Integer[] about_user_info = {R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme, R.string.aboutme};
 
     @Override
     public int getCount() {
@@ -116,7 +115,7 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
 
         TextView userworkarea = view.findViewById(R.id.user_workarea);
         userworkarea.setText(matchesPojoList.get(position).getPartnerWorkArea());
-//
+
         TextView partner_work_area = view.findViewById(R.id.partner_work_area);
         partner_work_area.setText(matchesPojoList.get(position).getPartnerWorkArea());
 
@@ -226,7 +225,6 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     final String userSent = postSnapShot.getKey();
-                    Log.v("Name:::::", userSent);
 
                     databaseReference.child(userSent).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -236,18 +234,17 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
                             String fetchedUserEmail = allFormDetailsPojo.loginDetailsEmailId;
 
                             String finalUserEmail = fetchedUserEmail.replace(".", "");
-
-                            String compareEmail = matchesPojoList.get(position).getPartnerEmail();
+                            //Log.d("UserEmail",""+finalUserEmail);
+                            String compareEmail = matchesPojoList.get(position).getPartnerEmail().replace(".","");
+                            //Log.d("compare",""+compareEmail);
 
                             if (finalUserEmail.equals(compareEmail)) {
                                 interestSent.setVisibility(View.VISIBLE);
                                 sentInterest.setVisibility(View.GONE);
                                 interestSent.setText("Request Sent");
-
+                                Log.d("INSIDE","INSIDE3");
                             }
-
                         }
-
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -269,7 +266,6 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     final String userSent = postSnapShot.getKey();
-                    Log.v("Name:::::", userSent);
 
                     databaseReference.child(userSent).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -280,17 +276,14 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
 
                             String finalUserEmail = fetchedUserEmail.replace(".", "");
 
-                            String compareEmail = matchesPojoList.get(position).getPartnerEmail();
+                            String compareEmail = matchesPojoList.get(position).getPartnerEmail().replace(".","");
 
                             if (finalUserEmail.equals(compareEmail)) {
                                 interestSent.setVisibility(View.VISIBLE);
                                 sentInterest.setVisibility(View.GONE);
                                 interestSent.setText("Request Received");
-
                             }
-
                         }
-
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -312,7 +305,6 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     final String connectedUser = postSnapShot.getKey();
-                    Log.v("Name:::::", connectedUser);
 
                     databaseReference.child(connectedUser).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -323,15 +315,13 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
 
                             String finalUserEmail = fetchedUserEmail.replace(".", "");
 
-                            String compareEmail = matchesPojoList.get(position).getPartnerEmail();
+                            String compareEmail = matchesPojoList.get(position).getPartnerEmail().replace(".","");
 
                             if (finalUserEmail.equals(compareEmail)) {
                                 interestSent.setVisibility(View.VISIBLE);
                                 sentInterest.setVisibility(View.GONE);
                                 interestSent.setText("Connected");
-
                             }
-
                         }
 
                         @Override
@@ -351,7 +341,7 @@ public class MatchesProfileSliderAdapter extends PagerAdapter {
             }
         });
 
-        ((ViewPager) container).addView(view, position);
+        ((ViewPager) container).addView(view);
 
         return view;
     }

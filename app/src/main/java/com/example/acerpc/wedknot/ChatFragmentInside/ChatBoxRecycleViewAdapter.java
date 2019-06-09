@@ -67,14 +67,6 @@ public class ChatBoxRecycleViewAdapter extends RecyclerView.Adapter<ChatBoxRecyc
             myViewHolder.senderBubbleLayout.setVisibility(View.VISIBLE);
         }
 
-      /*  myViewHolder.senderBubbleLayout.setVisibility(View.GONE);
-            myViewHolder.currentUserBubbleLayout.setVisibility(View.VISIBLE);
-
-        } else {
-            myViewHolder.senderBubbleLayout.setVisibility(View.VISIBLE);
-            myViewHolder.currentUserBubbleLayout.setVisibility(View.GONE);
-        }*/
-
     }
 
     @Override

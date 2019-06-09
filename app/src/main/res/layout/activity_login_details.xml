@@ -98,6 +98,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            android:visibility="gone"
+            app:lottie_fileName="loadingrecent.json"
+            app:lottie_loop="true" />
+
+
         <Button
             android:id="@+id/LoginDetailsButton"
             style="@style/NextButton"

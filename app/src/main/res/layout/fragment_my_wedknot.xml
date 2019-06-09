@@ -298,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/recent_button"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="40dp">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/animrecent"
@@ -312,8 +312,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/empty_image"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:outlineAmbientShadowColor="@color/mywhite"
                     android:outlineSpotShadowColor="@color/mywhite"
                     android:shadowColor="@color/colorPrimary"

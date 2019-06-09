@@ -80,6 +80,7 @@ public class SearchPartnerPreferences extends AppCompatActivity {
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchbutton.setEnabled(false);
                 //writeData();
                 compareUser();
                 Handler handler = new Handler();
@@ -447,14 +448,14 @@ public class SearchPartnerPreferences extends AppCompatActivity {
                     searchMatchesItemPojoList.clear();
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         final String userEmailKey = postSnapshot.getKey();
-                        Log.v("User Emails: ", userEmailKey);
+                        //Log.v("User Emails: ", userEmailKey);
 
                         //Image
                         databaseReference.child(userEmailKey).child("Image").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 final String fetchedUserImage = dataSnapshot.getValue(String.class);
-                                Log.v("Fetched Image", fetchedUserImage);
+                                //Log.v("Fetched Image", fetchedUserImage);
 
                                 databaseReference.child(userEmailKey).addValueEventListener(new ValueEventListener() {
                                     @Override
@@ -573,11 +574,10 @@ public class SearchPartnerPreferences extends AppCompatActivity {
 
         if (listSize != 0) {
             startActivity(new Intent(SearchPartnerPreferences.this, MatchesForSearch.class));
-            Log.v("Else:IF", "First");
+            searchbutton.setEnabled(true);
         } else if (listSize == 0) {
             Snackbar.make(relativeLayout, "No Matches Found", Snackbar.LENGTH_LONG).show();
-            Log.v("Else:IF", "Second");
-
+            searchbutton.setEnabled(true);
         }
 
     }

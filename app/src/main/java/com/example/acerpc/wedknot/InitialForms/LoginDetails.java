@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.acerpc.wedknot.R;
@@ -35,6 +36,8 @@ public class LoginDetails extends AppCompatActivity {
     static EditText phoneNo;
     static EditText passwordEditText;
 
+    LottieAnimationView animationView;
+
     private Button loginDetailsButton;
     private AwesomeValidation awesomeValidation;
 
@@ -53,7 +56,7 @@ public class LoginDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_details);
 
-        pref = getSharedPreferences("prefs",MODE_PRIVATE);
+        pref = getSharedPreferences("prefs", MODE_PRIVATE);
         edit = pref.edit();
 
         init();
@@ -66,15 +69,21 @@ public class LoginDetails extends AppCompatActivity {
         //Validation intializaation
         awesomeValidation = new AwesomeValidation(ValidationStyle.UNDERLABEL);
         awesomeValidation.setContext(this);
-        awesomeValidation.addValidation(this, R.id.full_name, "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", R.string.fullname_error);
-        awesomeValidation.addValidation(this, R.id.email_id, "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", R.string.email_error);
-        awesomeValidation.addValidation(this, R.id.phone_no, "^(\\+\\d{1,3}[- ]?)?\\d{10}$", R.string.phoneno_error);
-        awesomeValidation.addValidation(this, R.id.passsword_edittext, "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", R.string.password_error);
+        awesomeValidation.addValidation(this, R.id.full_name,
+                "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", R.string.fullname_error);
+        awesomeValidation.addValidation(this, R.id.email_id,
+                "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)" +
+                        "|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", R.string.email_error);
+        awesomeValidation.addValidation(this, R.id.phone_no, "^(\\+\\d{1,3}" +
+                "[- ]?)?\\d{10}$", R.string.phoneno_error);
+        awesomeValidation.addValidation(this, R.id.passsword_edittext, "^(?=." +
+                "*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", R.string.password_error);
 
         //Next Button
         loginDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animationView.setVisibility(View.VISIBLE);
                 submitForm();
             }
         });
@@ -100,14 +109,17 @@ public class LoginDetails extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(LoginDetails.this, "Email Already Exists.", Toast.LENGTH_SHORT).show();
+                    animationView.setVisibility(View.GONE);
+                    Toast.makeText(LoginDetails.this, "Email Already Exists.",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     writeInDatabase();
                     writeGenderOfEmail();
                     Intent intent = new Intent(LoginDetails.this, FamilyDetailsActivity.class);
                     startActivity(intent);
+                    animationView.setVisibility(View.GONE);
                     //To Keep LogIn
-                    edit.putBoolean("permission",true).apply();
+                    edit.putBoolean("permission", true).apply();
                     finish();
                 }
             }
@@ -137,7 +149,7 @@ public class LoginDetails extends AppCompatActivity {
         String personalDetailsCountry = personalDetailsActivity.countrySpinner.getSelectedItem().toString();
         String personalDetailsState = personalDetailsActivity.stateSpinner.getSelectedItem().toString();
         String personalDetailsCity = personalDetailsActivity.citySpinner.getSelectedItem().toString();
-        String personalDetailsAge = personalDetailsActivity.ageSpinner.getSelectedItem().toString();
+        String personalDetailsAge = personalDetailsActivity.ageSpinner.getText().toString();
 
         //SocialDetails
         String socialDetailsMartialStatus = socialDetails.martialStatus.getSelectedItem().toString();
@@ -209,9 +221,9 @@ public class LoginDetails extends AppCompatActivity {
         phoneNo = findViewById(R.id.phone_no);
         loginDetailsButton = findViewById(R.id.LoginDetailsButton);
         passwordEditText = findViewById(R.id.password);
+        animationView = findViewById(R.id.anim);
 
     }
-
 
 }
 

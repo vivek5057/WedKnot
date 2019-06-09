@@ -61,7 +61,7 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
         emptyView = view.findViewById(R.id.chat_empty_view);
         emptyImage = view.findViewById(R.id.empty_image);
         emptyText = view.findViewById(R.id.empty_title_text);
-        animationView = view.findViewById(R.id.animchat);
+        //animationView = view.findViewById(R.id.animchat);
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -107,9 +107,17 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
                                         //     Log.v("Chat Person Name:",friendName);
 
                                         chatListItemPojos.add(new ChatListItemPojo(personImage, friendName, friendEmail));
+
+                                        if(chatListItemPojos.size()!=0) {
+                                            emptyImage.setVisibility(View.INVISIBLE);
+                                            emptyText.setVisibility(View.INVISIBLE);
+                                        }
+
+
                                     }
                                     adapter = new ChatRecycleViewAdapter(getActivity(), ChatFragment.this,chatListItemPojos);
                                     recyclerView.setAdapter(adapter);
+
 
 
                                 }
@@ -138,24 +146,7 @@ public class ChatFragment extends Fragment implements ChatRecycleViewAdapter.Lis
             }
         });
 
-        int count = chatListItemPojos.size();
-        animationView.setVisibility(View.GONE);
-        // Log.v("count",count+"");
-        if(count==0)
 
-        {
-            recyclerView.setVisibility(View.GONE);
-            emptyImage.setVisibility(View.VISIBLE);
-            emptyText.setVisibility(View.VISIBLE);
-            animationView.setVisibility(View.GONE);
-
-        }
-        else
-
-        {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyView.setVisibility(View.GONE);
-        }
 
 
     }

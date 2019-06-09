@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -39,7 +40,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
     static Spinner heightSpinner;
     static Spinner countrySpinner;
     static Spinner stateSpinner;
-    static Spinner ageSpinner;
+    static TextView ageSpinner;
     static Spinner citySpinner;
     static RadioGroup genderGroup;
     RadioButton radioButton;
@@ -48,6 +49,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
     private AwesomeValidation awesomeValidation;
     static EditText dobText;
     Calendar myCalendar;
+    int currentYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,9 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
 
         myCalendar = Calendar.getInstance();
 
+        currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+
         //Validation
         awesomeValidation = new AwesomeValidation(ValidationStyle.UNDERLABEL);
         awesomeValidation.setContext(this);
@@ -75,7 +80,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
         awesomeValidation.addValidation(this, R.id.dobText, "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$", R.string.dob_error);
 
 
-        List<String> ageList = new ArrayList<>();
+        /*List<String> ageList = new ArrayList<>();
         for(int i=18 ; i<=65 ; i++){
             String age = Integer.toString(i);
             ageList.add(age);
@@ -85,7 +90,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
         ArrayAdapter ageSpinnerAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ageList);
         ageSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(ageSpinnerAdapter);
-
+*/
 
         List<String> height = new ArrayList<String>();
         height.add("Select Height");
@@ -208,19 +213,22 @@ public class PersonalDetailsActivity extends AppCompatActivity implements Adapte
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
+
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
+            updateLabel(currentYear-year);
         }
 
     };
 
-    private void updateLabel() {
+    private void updateLabel(int ageYear) {
         String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         dobText.setText(sdf.format(myCalendar.getTime()));
+        ageSpinner.setText(ageYear+"");
+
     }
 
 

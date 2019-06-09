@@ -75,11 +75,17 @@
 
 
             <!-- To show it as Dialog -->
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            <TextView
                 android:id="@+id/ageSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:hint="Age"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/round_corner_field"
                 android:spinnerMode="dialog" />
 

@@ -485,6 +485,8 @@ public class PartnerListFragment extends Fragment {
                                                                 fetchedIncome = partnerPreferencesInitialPojo.income;
                                                                 fetchedEducation = partnerPreferencesInitialPojo.education;
                                                                 fetchedMaritalStatus = partnerPreferencesInitialPojo.maritalStatus;
+                                                                Log.d("Height",""+fetchedReligion);
+                                                                Log.d("Height",""+fetchedMaxAge);
                                                             }
 
                                                             final String finalFetchedMinAge = fetchedMinAge;

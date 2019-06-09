@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class MyWedknotFragment extends Fragment {
     private LinearLayout myFamilyLayout;
     private FloatingActionButton searchFloatingButton;
     private CircleImageView userProfilePic;
+
     TextView currentUserNameTextView;
     FirebaseUser currentUser;
     FirebaseDatabase firebaseDatabase;
@@ -68,6 +70,7 @@ public class MyWedknotFragment extends Fragment {
     RecentlyJoinedRecyclerViewAdapter adapter;
     LinearLayoutManager linearLayoutManager;
     List<RecentlyJoinedPojo> recentlyJoinedPojos;
+
     ImageView emptyImage;
     TextView emptyText;
 
@@ -107,13 +110,14 @@ public class MyWedknotFragment extends Fragment {
         weekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                recentlyJoinedPojos.clear();
+                animationView.setVisibility(View.VISIBLE);
                 monthButton.setVisibility(View.VISIBLE);
                 week1Button.setVisibility(View.VISIBLE);
                 weekButton.setVisibility(View.INVISIBLE);
                 month1Button.setVisibility(View.INVISIBLE);
                 long day = (1000 * 60 * 60 * 24); // 24 hours in milliseconds
                 long mSecInWeek = day * 7;
-                recentlyJoinedPojos.clear();
                 readRecentlyJoinedAccounts(mSecInWeek);
 
             }
@@ -122,15 +126,16 @@ public class MyWedknotFragment extends Fragment {
         monthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                recentlyJoinedPojos.clear();
+                animationView.setVisibility(View.VISIBLE);
                 weekButton.setVisibility(View.VISIBLE);
                 month1Button.setVisibility(View.VISIBLE);
                 monthButton.setVisibility(View.INVISIBLE);
                 week1Button.setVisibility(View.INVISIBLE);
-                filterEdit.putBoolean("button", true);
                 long day = (1000 * 60 * 60 * 24); // 24 hours in milliseconds
                 long mSecInMonth = day * 30;
-                recentlyJoinedPojos.clear();
                 readRecentlyJoinedAccounts(mSecInMonth);
+
             }
         });
 
@@ -235,12 +240,12 @@ public class MyWedknotFragment extends Fragment {
                     String currentUserName = allFormDetailsPojo.loginDetailsFullName;
                     currentUserGender = allFormDetailsPojo.personalDetailsGender;
                     currentUserNameTextView.setText(currentUserName);
+                    long day = (1000 * 60 * 60 * 24); // 24 hours in milliseconds
+                    long mSecInWeek = day * 7;
+                    recentlyJoinedPojos.clear();
+                    readRecentlyJoinedAccounts(mSecInWeek);
+                    monthButton.setEnabled(true);
                 }
-                long day = (1000 * 60 * 60 * 24); // 24 hours in milliseconds
-                long mSecInWeek = day * 7;
-                recentlyJoinedPojos.clear();
-                readRecentlyJoinedAccounts(mSecInWeek);
-                monthButton.setEnabled(true);
             }
 
             @Override
@@ -248,8 +253,8 @@ public class MyWedknotFragment extends Fragment {
                 Toast.makeText(getActivity(), "" + databaseError.toException(), Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
 
     public void readRecentlyJoinedAccounts(long milliSec) {
         long currentTime = System.currentTimeMillis();
@@ -259,6 +264,7 @@ public class MyWedknotFragment extends Fragment {
             databaseReference.child("Female").orderByValue().startAt(oneMonthBefore).endAt(currentTime).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                     for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                         final String userEmailKey = postSnapShot.getKey();
                         //    Log.v("Recently Joined:", userEmailKey);
@@ -387,6 +393,16 @@ public class MyWedknotFragment extends Fragment {
 
 
         }
+/*
+        if(recentlyJoinedPojos.size()==0){
+            emptyImage.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.VISIBLE);
+            animationView.setVisibility(View.GONE);
+        }else{
+            emptyImage.setVisibility(View.INVISIBLE);
+            emptyText.setVisibility(View.INVISIBLE);
+            animationView.setVisibility(View.GONE);
+        }*/
     }
 
 
